@@ -15,8 +15,8 @@ export const round = (value: number, accuracy = 2): number => {
 const transformRegexp =
   /(matrix\(-?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, )(-?\d+(\.\d+)?), (-?\d+(\.\d+)?)\)/;
 
-export type Coord = { x: number; y: number };
-export const getTransformFromCss = (transformCssString: string): Coord => {
+export type TCoord = { x: number; y: number };
+export const getTransformFromCss = (transformCssString: string): TCoord => {
   const data = transformCssString.match(transformRegexp);
   if (!data) return { x: 0, y: 0 };
   return {
@@ -25,23 +25,23 @@ export const getTransformFromCss = (transformCssString: string): Coord => {
   };
 };
 
-type Rgb = [number, number, number];
-export const getColorContrastValue = (rgb: Rgb): number =>
+export type TRgb = [number, number, number];
+export const getColorContrastValue = (rgb: TRgb): number =>
   // http://www.w3.org/TR/AERT#color-contrast
   Math.round((rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000);
 
-//export const getContrastType = (contrastValue) => (contrastValue > 125 ? 'black' : 'white');
-export const getContrastType = (contrastValue: number): string => (contrastValue > 125 ? 'black' : 'white');
+type TContrast = 'black' | 'white';
+export const getContrastType = (contrastValue: number): TContrast => (contrastValue > 125 ? 'black' : 'white');
 
 export const shortColorRegExp = /^#[0-9a-f]{3}$/i;
 export const longColorRegExp = /^#[0-9a-f]{6}$/i;
 
-export const checkColor = (color: string): string => {
+type TError = void | never;
+export const checkColor = (color: string): TError => {
   if (!longColorRegExp.test(color) && !shortColorRegExp.test(color)) throw new Error(`invalid hex color: ${color}`);
-  return color;
 };
 
-export const hex2rgb = (color: string): number[] => {
+export const hex2rgb = (color: string): TRgb => {
   checkColor(color);
   if (shortColorRegExp.test(color)) {
     const red = parseInt(color.substring(1, 2), 16);
@@ -60,20 +60,18 @@ export const getNumberedArray = <T>(arr: T[]): { value: T; number: number }[] =>
 
 export const toStringArray = (arr: any[]): string[] => arr.map(({ value, number }) => `${value}_${number}`);
 
-type Customer = {
-  id: number;
+type TCustomer = {
+  id: string;
   name: string;
   age: number;
   isSubscribed: boolean;
 };
 
-type Account = {
-  [key in number]: Customer;
-};
+type TAccount = Record<string, Omit<TCustomer, 'id'>>;
 
-export const transformCustomers = (customers: Customer[]): Account => {
-  return customers.reduce((acc, customer) => {
-    acc[customer.id] = { name: customer.name, age: customer.age, isSubscribed: customer.isSubscribed } as Customer;
+export const transformCustomers = (customers: TCustomer[]): TAccount => {
+  return customers.reduce((acc: TAccount, customer: TCustomer) => {
+    acc[customer.id] = { name: customer.name, age: customer.age, isSubscribed: customer.isSubscribed };
     return acc;
-  }, {} as Account);
+  }, {});
 };

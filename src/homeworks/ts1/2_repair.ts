@@ -31,17 +31,15 @@ export type Percent = {
 const getDataAmount = (data: Data): number => {
   switch (data.type) {
     case 'Money': {
-      const value = data.value as Money;
-      return value.amount;
+      return (data.value as Money).amount;
     }
     case 'Percent': {
-      const value = data.value as Percent;
-      return value.percent;
+      return (data.value as Percent).percent;
     }
 
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const unhandled: never = data.type;
+      const unhandled: never = data as unknown as never;
       throw new Error(`unknown type: ${data.type}`);
     }
   }

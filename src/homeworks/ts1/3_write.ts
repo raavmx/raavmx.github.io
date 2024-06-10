@@ -11,7 +11,7 @@ import {
   countries,
 } from 'unique-names-generator';
 
-// создаем новые типы
+
 export type Category = {
   id: string;
   name: string;
@@ -29,23 +29,32 @@ export type Product = {
   category: Category;
 };
 
-export type Operation = {
+interface IOperation {
   id: string;
   name: string;
-  photo: string;
   desc?: string;
   createdAt: string;
-  oldPrice?: number;
   amount: number;
   category: Category;
-  type: 'Cost' | 'Profit';
-};
+}
+
+interface ICost extends IOperation {
+  type: 'Cost';
+}
+
+interface IProfit extends IOperation {
+  type: 'Profit';
+}
+
+export type Operation = Cost | Profit;
+export type Cost = ICost;
+export type Profit = IProfit;
 
 //создание случайного продукта
 export const createRandomProduct = (createdAt: string): Product => {
   const productId = getRandomId(); //новый id продукта
   const category = getRandomElement(categories); //получаем категорию
-  const price = Math.floor(Math.random() * 10000); //цена
+  const price = getRandomNumber(10000); //цена
   return {
     id: productId,
     name: uniqueNamesGenerator(getConfigByCategory(category.name)), //на основе категории , получаем подходящее имя
@@ -53,7 +62,7 @@ export const createRandomProduct = (createdAt: string): Product => {
     createdAt: createdAt,
     oldPrice: price < 4000 ? price * 1.3 : null, //иногда заполняем старую цену
     price: price,
-    desc: ['1', '3', '5'].includes(category.id) ? uniqueNamesGenerator(getConfigByCategory('Description', ' | ')) : '', //иногда заполняем описание
+    desc: uniqueNamesGenerator(getConfigByCategory('Description', ' | ')),
     category: category,
   };
 };
@@ -64,13 +73,11 @@ export const createRandomOperation = (createdAt: string): Operation => {
   return {
     id: getRandomId(),
     name: product.name,
-    photo: product.photo,
     desc: product.desc,
     createdAt: createdAt,
-    oldPrice: product.oldPrice,
     amount: product.price,
     category: product.category,
-    type: product.price % 3 == 0 ? 'Cost' : 'Profit',
+    type: getRandomElement(['Cost', 'Profit']),
   };
 };
 
@@ -91,11 +98,12 @@ const getRandomId = () => {
 
 // возвращает случайный элемент из переданного списка
 const getRandomElement = <T>(array: T[]): T | undefined => {
-  if (array.length === 0) {
-    return undefined;
-  }
-  const randomIndex = Math.floor(Math.random() * array.length);
+  const randomIndex = getRandomNumber(array.length);
   return array[randomIndex];
+};
+
+const getRandomNumber = (max = 1000): number => {
+  return Math.floor(max * Math.random());
 };
 
 //формируем название или описание, в зависимости от категории (чтобы избежать абсолютной абракадабры)
