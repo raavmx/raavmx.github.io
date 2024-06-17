@@ -58,7 +58,7 @@ export const hex2rgb = (color: string): TRgb => {
 export const getNumberedArray = <T>(arr: T[]): { value: T; number: number }[] =>
   arr.map((value, index) => ({ value, number: index as number }));
 
-export const toStringArray = (arr: any[]): string[] => arr.map(({ value, number }) => `${value}_${number}`);
+export const toStringArray = <T>(arr: T[]): string[] => arr.map((value, number) => `${value}_${number}`);
 
 type TCustomer = {
   id: string;
