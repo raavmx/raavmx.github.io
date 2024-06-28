@@ -64,6 +64,7 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "clsx": "^1.2.1",
     "random-js": "^2.1.0",
     "react": "^18.2.0",
