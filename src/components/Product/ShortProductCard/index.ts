@@ -1,1 +1,1 @@
-export * from "./ShortProductCard";
+export * from './ShortProductCard';
