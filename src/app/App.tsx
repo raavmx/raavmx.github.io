@@ -7,9 +7,7 @@ function App() {
   return (
     <Layout>
       <Header />
-      <p className="p-5 mt-5">
-        Lorem Ipsum 
-      </p>
+      <p className="p-5 mt-5">Lorem Ipsum</p>
     </Layout>
   );
 }

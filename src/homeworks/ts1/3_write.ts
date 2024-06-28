@@ -11,7 +11,6 @@ import {
   countries,
 } from 'unique-names-generator';
 
-
 export type Category = {
   id: string;
   name: string;
@@ -107,7 +106,7 @@ const getRandomNumber = (max = 1000): number => {
 };
 
 //формируем название или описание, в зависимости от категории (чтобы избежать абсолютной абракадабры)
-export const getConfigByCategory = (name: string, separator: string = ' '): Config => {
+export const getConfigByCategory = (name: string, separator = ' '): Config => {
   switch (name) {
     case 'People': {
       return { separator: separator, dictionaries: [colors, names] };
