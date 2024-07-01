@@ -1,10 +1,10 @@
-import type { Meta } from "@storybook/react";
-import { FullProductCard } from "./FullProductCard";
+import type { Meta } from '@storybook/react';
+import { FullProductCard } from './FullProductCard';
 
 const meta: Meta<typeof FullProductCard> = {
-  title: "Компоненты/Product/FullProductCard",
+  title: 'Компоненты/Product/FullProductCard',
   component: FullProductCard,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -29,7 +29,7 @@ export const Товар_2 = {
     product: {
       id: 2,
       name: 'Ноутбук 2',
-      photos: ['0.jpg','1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+      photos: ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
       desc: 'Lorem ipsum, dolor',
       createAt: '01.01.2023 23:59:59',
       oldPrice: '',
@@ -44,7 +44,7 @@ export const Товар_3 = {
     product: {
       id: 3,
       name: 'Телефон 3 Lorem ipsum.',
-      photos: ['0.jpg','1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+      photos: ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
       desc: 'Lorem ipsum',
       createAt: '01.01.2023 23:59:59',
       oldPrice: '',
@@ -59,7 +59,7 @@ export const Товар_4 = {
     product: {
       id: 4,
       name: 'Телефон 4 Lorem ipsum dolor',
-      photos: ['0.jpg','1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+      photos: ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
       desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum,Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum,Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum,',
       createAt: '01.01.2023 23:59:59',
       oldPrice: '',
@@ -74,7 +74,7 @@ export const Товар_5 = {
     product: {
       id: 5,
       name: 'Телефон 5 Lorem ipsum dolor, sit amet consecteturProduct 5 Lorem ipsum dolor, sit amet consecteturProduct 5 Lorem ipsum dolor, sit amet consectetur',
-      photos: ['0.jpg','1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
+      photos: ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'],
       desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum,Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum,Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum,',
       createAt: '01.01.2023 23:59:59',
       oldPrice: 70000,
@@ -83,4 +83,3 @@ export const Товар_5 = {
     },
   },
 };
-

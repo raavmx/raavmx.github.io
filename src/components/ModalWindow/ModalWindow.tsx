@@ -3,8 +3,8 @@ import cn from 'classnames';
 import './ModalWindow.scss';
 
 export type TypeModal = {
-   visible: boolean;
-   children?: React.ReactNode;
+  visible: boolean;
+  children?: React.ReactNode;
 };
 
 export const ModalWindow: FC<TypeModal> = ({ visible = false, children }): ReactElement => {
