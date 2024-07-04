@@ -1,11 +1,12 @@
-import  Header  from "./Header";
+import type { Meta } from '@storybook/react';
+import { Header } from './Header';
 
-export default {
-  title: "Компоненты/Header",
+const meta: Meta<typeof Header> = {
+  title: 'Компоненты/Header',
   component: Header,
   tags: ['autodocs'],
-}
+};
 
-const Template = () => <Header />
+export default meta;
 
-export const header = Template.bind({});
+export const Заголовок = {};

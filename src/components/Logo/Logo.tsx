@@ -1,15 +1,16 @@
-import React from 'react';
-import clsx from 'clsx';
-import classNames from './Logo.module.css';
+import React, { FC, ReactElement } from 'react';
+import './Logo.scss';
 import logo from '../../assets/logo.svg';
 
-export const Logo = ({ title = 'store' }) => {
+interface ILogo {
+  title: string;
+}
+
+export const Logo: FC<ILogo> = ({ title = 'store' }): ReactElement => {
   return (
-    <a href="/" className={clsx(classNames.logo)}>
+    <a href="/" className="logo">
       <img src={logo} />
-      <h1>{title}</h1>
+      <h2>{title}</h2>
     </a>
   );
 };
-
-export default Logo;

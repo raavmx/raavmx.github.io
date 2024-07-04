@@ -5,8 +5,7 @@
   top: 0;
   background-color: var(--nav-bg-color);
   color: var(--nav-color);
-  display: grid;
-  grid-template-columns: 300px auto;
-  align-items: center;
+  display: flex;
+  align-items: center; 
   transition: all .3s;
 }

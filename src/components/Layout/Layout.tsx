@@ -1,11 +1,10 @@
-import React from 'react';
-import clsx from 'clsx';
-import classNames from './Layout.module.css';
+import React, { FC, ReactElement } from 'react';
+import './Layout.scss';
 
-export const Layout = ({children}) => {
-  return (   
-      <div className={clsx(classNames.layout)}>
-      {children}
-      </div>   
-  );
+interface ILayout {
+  children?: React.ReactNode;
+}
+
+export const Layout: FC<ILayout> = ({ children }): ReactElement => {
+  return <div className="layout">{children}</div>;
 };
