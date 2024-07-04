@@ -5,13 +5,14 @@ import './ModalWindow.scss';
 export type TypeModal = {
   visible: boolean;
   children?: React.ReactNode;
+  onCloseModalWindow?: (visible: boolean) => void;
 };
 
-export const ModalWindow: FC<TypeModal> = ({ visible = false, children }): ReactElement => {
+export const ModalWindow: FC<TypeModal> = ({ visible = false, onCloseModalWindow, children }): ReactElement => {
   return (
     <div className={cn('modal', { open: visible })}>
       <div className="box">
-        <button className="box__close-btn">
+        <button className="box__close-btn" onClick={() => onCloseModalWindow(false)}>
           <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z"
