@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from 'react';
 import './FullProductCard.scss';
 import { TypeProduct } from '../types';
 
-export const FullProductCard: FC<TypeProduct> = ({ product }): ReactElement => {
+export const FullProductCard: FC<TypeProduct> = (product): ReactElement => {
   const { id, name, photos, desc, oldPrice, price } = product;
   return (
     <>
@@ -12,11 +12,6 @@ export const FullProductCard: FC<TypeProduct> = ({ product }): ReactElement => {
             <div className="bg-white h-100">
               <div id="carouselExampleFade" className="carousel carousel-dark slide carousel-fade">
                 <div className="carousel-inner">
-                  {photos.map((photo, index) => (
-                    <div key={index} className={`carousel-item${index === id - 1 ? ' active' : ''}`}>
-                      <img src={require(`../photos/${photo}`)} className="d-block w-100" alt="..." />
-                    </div>
-                  ))}
                 </div>
                 <button
                   className="carousel-control-prev"
