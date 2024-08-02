@@ -1,5 +1,4 @@
 import React, { FC, ReactElement } from 'react';
-import { createPortal } from 'react-dom';
 import { ModalWindow } from '../ModalWindow';
 import { Portal } from '../Portal';
 
