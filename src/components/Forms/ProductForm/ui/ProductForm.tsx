@@ -8,7 +8,7 @@ import { isNotDefinedString } from '../../../../utils/validation';
 import { ProductFormErrors, ProductFormValues } from '../types/ProductFormTypes';
 import { TextAreaFormField } from '../../../FormField/TextAreaFormField';
 import { SelectFormField } from '../../../FormField/SelectFormField';
-import { categories } from '../../../entities/Category/Const/CategoryConst';
+import { categories } from '../../../../entities/Category/Const/CategoryConst';
 
 export const ProductForm: FC = () => {
   const { t } = useTranslation();
@@ -16,15 +16,15 @@ export const ProductForm: FC = () => {
   const validate = (values: ProductFormValues) => {
     const errors = {} as ProductFormErrors;
     if (isNotDefinedString(values.name)) {
-      errors.name = t('Errors.is_required');
+      errors.name = t('errors.is_required');
     }
 
     if (values.price == undefined || Number(values.price) <= 0) {
-      errors.price = t('Errors.number_is_lower_then_zero');
+      errors.price = t('errors.number_is_lower_then_zero');
     }
 
     if (isNotDefinedString(values.category)) {
-      errors.category = t('Errors.is_required');
+      errors.category = t('errors.is_required');
     }
 
     return errors;
@@ -62,8 +62,8 @@ export const ProductForm: FC = () => {
         touched={touched.name}
         name="name"
         value={values.name}
-        placeholder={t('Forms.ProductForm.Name.title')}
-        title={t('Forms.ProductForm.Name.placeholder')}
+        placeholder={t('forms.ProductForm.Name.title')}
+        title={t('forms.ProductForm.Name.placeholder')}
       />
 
       <TextAreaFormField
@@ -74,8 +74,8 @@ export const ProductForm: FC = () => {
         touched={touched.desc}
         name="desc"
         value={values.desc}
-        placeholder={t('Forms.ProductForm.Description.title')}
-        title={t('Forms.ProductForm.Description.placeholder')}
+        placeholder={t('forms.ProductForm.Description.title')}
+        title={t('forms.ProductForm.Description.placeholder')}
       />
 
       <NumberFormField
@@ -88,8 +88,8 @@ export const ProductForm: FC = () => {
         touched={touched.price}
         name="price"
         value={values.price}
-        placeholder={t('Forms.ProductForm.Price.title')}
-        title={t('Forms.ProductForm.Price.placeholder')}
+        placeholder={t('forms.ProductForm.Price.title')}
+        title={t('forms.ProductForm.Price.placeholder')}
       />
 
       <NumberFormField
@@ -102,8 +102,8 @@ export const ProductForm: FC = () => {
         touched={touched.oldPrice}
         name="oldPrice"
         value={values.oldPrice}
-        placeholder={t('Forms.ProductForm.OldPrice.title')}
-        title={t('Forms.ProductForm.OldPrice.placeholder')}
+        placeholder={t('forms.ProductForm.OldPrice.title')}
+        title={t('forms.ProductForm.OldPrice.placeholder')}
       />
 
       <TextFormField
@@ -114,8 +114,8 @@ export const ProductForm: FC = () => {
         touched={touched.photo}
         name="photo"
         value={values.photo}
-        placeholder={t('Forms.ProductForm.Photo.title')}
-        title={t('Forms.ProductForm.Photo.placeholder')}
+        placeholder={t('forms.ProductForm.Photo.title')}
+        title={t('forms.ProductForm.Photo.placeholder')}
       />
 
       <SelectFormField
@@ -128,13 +128,13 @@ export const ProductForm: FC = () => {
         touched={touched.category}
         name="category"
         value={values.category}
-        placeholder={t('Forms.ProductForm.Category.title')}
-        title={t('Forms.ProductForm.Category.placeholder')}
+        placeholder={t('forms.ProductForm.Category.title')}
+        title={t('forms.ProductForm.Category.placeholder')}
         options={options}
       />
 
-      <Button type="submit" style={'primary'} size="small" onClick={handleSubmit}>
-        {t('Forms.ProductForm.Button.title')}
+      <Button type="submit" variant={'primary'} size="small" onClick={handleSubmit}>
+        {t('forms.ProductForm.Button.title')}
       </Button>
     </form>
   );

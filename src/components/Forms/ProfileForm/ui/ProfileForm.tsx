@@ -12,7 +12,7 @@ export const ProfileForm: FC = () => {
   const validate = (values: ProfileFormValues) => {
     const errors = {} as ProfileFormErrors;
     if (!values.name) {
-      errors.name = t('Errors.is_required');
+      errors.name = t('errors.is_required');
     }
     return errors;
   };

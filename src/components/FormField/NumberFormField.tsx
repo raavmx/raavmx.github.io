@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { InputNumber } from 'antd';
 import { FormItem } from '../FormItem/FormItem';
-import { getValidates } from '../../../utils/validation';
-import { NumberFormFieldProps } from 'src/shared/types/FormFieldTypes';
+import { getValidates } from '../../utils/validation';
+import { NumberFormFieldProps } from '../../types/FormFieldTypes';
 
 export const NumberFormField = memo<NumberFormFieldProps>(
   ({ onChange, onBlur, touched, value, errors, disabled, submitCount, name, placeholder, title }) => {
