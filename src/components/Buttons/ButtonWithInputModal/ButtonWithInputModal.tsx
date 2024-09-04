@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useState, ChangeEvent } from 'react';
 import { ModalWindow } from '../../ModalWindow';
+import { Button } from 'antd';
 
 export const ButtonWithInputModal: FC = (): ReactElement => {
   const [input, setInput] = useState<string>('');
@@ -18,7 +19,7 @@ export const ButtonWithInputModal: FC = (): ReactElement => {
       <input className="w-50" onChange={(e) => handlerChangeInput(e)} value={input} placeholder="Введите текст"></input>
       <br />
       <br />
-      <button onClick={() => openModal(true)}>Нажми меня и вылетит птичка</button>
+      <Button onClick={() => openModal(true)}>Нажми меня</Button>
       <ModalWindow visible={visible} onCloseModalWindow={openModal}>
         {input}
       </ModalWindow>
