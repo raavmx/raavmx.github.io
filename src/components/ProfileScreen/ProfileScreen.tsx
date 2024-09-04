@@ -7,9 +7,9 @@ import s from './ProfileScreen.sass';
 export const ProfileScreen: FC = () => {
   const { t } = useTranslation();
   return (
-   // <Page title={t`screens.ProfileScreen.title`}>
-      <SettingsBlock className={s.block} />
-  //  </Page>
+    // <Page title={t`screens.ProfileScreen.title`}>
+    <SettingsBlock className={s.block} />
+    //  </Page>
   );
 };
 

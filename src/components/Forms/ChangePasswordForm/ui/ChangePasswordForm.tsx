@@ -76,7 +76,7 @@ export const ChangePasswordForm: FC = memo(() => {
         placeholder={t('forms.ChangePasswordForm.RepeatPassword.placeholder')}
         title={t('forms.ChangePasswordForm.RepeatPassword.title')}
       />
-      <Button type="submit" variant='primary' size="small" onClick={handleSubmit}>
+      <Button type="submit" variant="primary" size="small" onClick={handleSubmit}>
         {t('forms.ChangePasswordForm.Button.title')}
       </Button>
     </>

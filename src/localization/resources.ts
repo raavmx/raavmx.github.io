@@ -29,86 +29,86 @@ export const resources = {
       errors: {
         is_required: 'необходимо заполнить',
         not_same_password: 'пароли не совпадают',
-        is_not_valid_email : "Не верный формат email",
-        number_is_lower_then_zero : "Число должно быть больше нуля"
+        is_not_valid_email: 'Не верный формат email',
+        number_is_lower_then_zero: 'Число должно быть больше нуля',
       },
-      forms : {
+      forms: {
         ProfileForm: {
-          Name : {
-            title: "Псевдоним",
-            placeholder : "Придумайте себе псевдоним"
+          Name: {
+            title: 'Псевдоним',
+            placeholder: 'Придумайте себе псевдоним',
           },
           About: {
-            title: "О себе",
-            placeholder : "Напишите что-нибудь о себе"
+            title: 'О себе',
+            placeholder: 'Напишите что-нибудь о себе',
           },
-          Button : {
-            title : "Сохранить"
+          Button: {
+            title: 'Сохранить',
           },
-          Title : "Изменить профиль"
+          Title: 'Изменить профиль',
         },
-        ChangePasswordForm : {
-          Button : {
-            title : "Изменить"
+        ChangePasswordForm: {
+          Button: {
+            title: 'Изменить',
           },
-          Password : {
-            title : "Пароль",
-            placeholder : "Введите пароль"
+          Password: {
+            title: 'Пароль',
+            placeholder: 'Введите пароль',
           },
-          NewPassword : {
-            title : "Новый пароль",
-            placeholder : "Новый пароль"
+          NewPassword: {
+            title: 'Новый пароль',
+            placeholder: 'Новый пароль',
           },
-          RepeatPassword : {
-            title : "Повторите пароль",
-            placeholder : "Повторите пароль"
+          RepeatPassword: {
+            title: 'Повторите пароль',
+            placeholder: 'Повторите пароль',
           },
-        Title : "Изменить пароль"
+          Title: 'Изменить пароль',
         },
-        LoginForm : {
-          Title : "Войти",
-          Email : {
-            title : "Email",
-            placeholder : "Укажите email"
+        LoginForm: {
+          Title: 'Войти',
+          Email: {
+            title: 'Email',
+            placeholder: 'Укажите email',
           },
-          Password : {
-            title : "Пароль",
-            placeholder : "Введите пароль"
+          Password: {
+            title: 'Пароль',
+            placeholder: 'Введите пароль',
           },
-          Button : {
-            title : "Войти"
-          }
+          Button: {
+            title: 'Войти',
+          },
         },
-        ProductForm : {
-          Title : "",
-          Name : {
-            title : "Наименование продукта",
-            placeholder : "Наименование продукта"
+        ProductForm: {
+          Title: '',
+          Name: {
+            title: 'Наименование продукта',
+            placeholder: 'Наименование продукта',
           },
-          Price : {
-            title : "Стоимость продукта",
-            placeholder : "Стоимость продукта"
+          Price: {
+            title: 'Стоимость продукта',
+            placeholder: 'Стоимость продукта',
           },
-          OldPrice : {
-            title : "Старая стоимость продукта",
-            placeholder : "Старая стоимость продукта"
+          OldPrice: {
+            title: 'Старая стоимость продукта',
+            placeholder: 'Старая стоимость продукта',
           },
-          Description : {
-            title : "Описание",
-            placeholder : "Описание"
+          Description: {
+            title: 'Описание',
+            placeholder: 'Описание',
           },
-          Photo : {
-            title : "Ссылка на фото",
-            placeholder : "Ссылка на фото"
+          Photo: {
+            title: 'Ссылка на фото',
+            placeholder: 'Ссылка на фото',
           },
-          Category : {
-            title : "Категория",
-            placeholder : "Категория"
+          Category: {
+            title: 'Категория',
+            placeholder: 'Категория',
           },
-          Button : {
-            title : "Добавить"
-          }
-        }
+          Button: {
+            title: 'Добавить',
+          },
+        },
       },
     },
   },
@@ -142,86 +142,86 @@ export const resources = {
       errors: {
         is_required: 'required',
         not_same_password: 'not same password',
-        is_not_valid_email : "Email is not valid",
-        number_is_lower_then_zero : "Number need to be upper then zero"
+        is_not_valid_email: 'Email is not valid',
+        number_is_lower_then_zero: 'Number need to be upper then zero',
       },
-      forms : {
+      forms: {
         ProfileForm: {
-          Name : {
-            title: "Nickname",
-            placeholder : "Come up with a pseudonym for yourself"
+          Name: {
+            title: 'Nickname',
+            placeholder: 'Come up with a pseudonym for yourself',
           },
-          About : {
-            title: "About",
-            placeholder : "Write something about yourself"
+          About: {
+            title: 'About',
+            placeholder: 'Write something about yourself',
           },
-          Button : {
-            title : "Save"
+          Button: {
+            title: 'Save',
           },
-          Title : "Change profile"
+          Title: 'Change profile',
         },
-        ChangePasswordForm : {
-          Button : {
-            title : "Change"
+        ChangePasswordForm: {
+          Button: {
+            title: 'Change',
           },
-          Password : {
-            title : "Password",
-            placeholder : "Enter password"
+          Password: {
+            title: 'Password',
+            placeholder: 'Enter password',
           },
-          NewPassword : {
-            title : "New password",
-            placeholder : "New password"
+          NewPassword: {
+            title: 'New password',
+            placeholder: 'New password',
           },
-          RepeatPassword : {
-            title : "Repeat password",
-            placeholder : "Repeat password"
+          RepeatPassword: {
+            title: 'Repeat password',
+            placeholder: 'Repeat password',
           },
-        Title : "Change password"
+          Title: 'Change password',
         },
-        LoginForm : {
-          Title : "Sign in",
-          Email : {
-            title : "Email", 
-            placeholder : "Enter email"
+        LoginForm: {
+          Title: 'Sign in',
+          Email: {
+            title: 'Email',
+            placeholder: 'Enter email',
           },
-          Password : {
-            title : "Password",
-            placeholder : "Enter password"
+          Password: {
+            title: 'Password',
+            placeholder: 'Enter password',
           },
-          Button : {
-            title : "Sign in"
-          }
+          Button: {
+            title: 'Sign in',
+          },
         },
-        ProductForm : {
-          Title : "",
-          Name : {
-            title : "Name",
-            placeholder : "Name"
+        ProductForm: {
+          Title: '',
+          Name: {
+            title: 'Name',
+            placeholder: 'Name',
           },
-          Price : {
-            title : "Price",
-            placeholder : "Price"
+          Price: {
+            title: 'Price',
+            placeholder: 'Price',
           },
-          OldPrice : {
-            title : "Old price",
-            placeholder: "Old price"
+          OldPrice: {
+            title: 'Old price',
+            placeholder: 'Old price',
           },
-          Description : {
-            title : "Description",
-            placeholder : "Description"
+          Description: {
+            title: 'Description',
+            placeholder: 'Description',
           },
-          Photo : {
-            title : "Photo url",
-            placeholder : "Photo url"
+          Photo: {
+            title: 'Photo url',
+            placeholder: 'Photo url',
           },
-          Category : {
-            title : "Category",
-            placeholder : "Category"
+          Category: {
+            title: 'Category',
+            placeholder: 'Category',
           },
-          Button : {
-            title : "Add"
-          }
-        }
+          Button: {
+            title: 'Add',
+          },
+        },
       },
     },
   },

@@ -13,7 +13,6 @@ export const ModalWindowPortal: FC<TypeModalPortal> = ({
   onCloseModalWindow,
   children,
 }): ReactElement => {
-
   return (
     visible && (
       <Portal>
