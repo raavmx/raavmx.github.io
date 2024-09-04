@@ -11,8 +11,7 @@ export const FullProductCard: FC<TypeProduct> = (product): ReactElement => {
           <div className="col-md-5 col-lg-4 mb-3">
             <div className="bg-white h-100">
               <div id="carouselExampleFade" className="carousel carousel-dark slide carousel-fade">
-                <div className="carousel-inner">
-                </div>
+                <div className="carousel-inner"></div>
                 <button
                   className="carousel-control-prev"
                   type="button"

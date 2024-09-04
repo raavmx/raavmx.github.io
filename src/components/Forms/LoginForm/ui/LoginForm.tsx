@@ -67,7 +67,6 @@ export const LoginForm = memo(() => {
       <Button type="submit" variant={'primary'} size="small" onClick={handleSubmit}>
         {t('forms.LoginForm.Button.title')}
       </Button>
-      
     </form>
   );
 });

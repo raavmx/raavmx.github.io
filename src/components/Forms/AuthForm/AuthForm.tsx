@@ -35,7 +35,7 @@ export const AuthForm = () => {
     //     password: data.password,
     //   })
     // );
-    console.log("auth", data);
+    console.log('auth', data);
     reset();
 
     //modal.close();
@@ -44,15 +44,23 @@ export const AuthForm = () => {
   return (
     <form onSubmit={handleSubmit(customHandleSubmit)}>
       <div>
-        <Controller name="login" control={control} render={({ field }) => <Input {...field} size="large" className='my-2' placeholder="login" />} />
+        <Controller
+          name="login"
+          control={control}
+          render={({ field }) => <Input {...field} size="large" className="my-2" placeholder="login" />}
+        />
       </div>
       <div>
-        <Controller name="password" control={control} render={({ field }) => <Input.Password {...field} size="large" className='my-2' placeholder="password" />} />
+        <Controller
+          name="password"
+          control={control}
+          render={({ field }) => <Input.Password {...field} size="large" className="my-2" placeholder="password" />}
+        />
       </div>
       <hr />
-      <Button type="primary" htmlType='submit' className="w-100">
-         Войти
-       </Button>
+      <Button type="primary" htmlType="submit" className="w-100">
+        Войти
+      </Button>
     </form>
   );
 };

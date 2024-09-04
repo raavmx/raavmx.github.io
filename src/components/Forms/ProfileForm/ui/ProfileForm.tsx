@@ -54,7 +54,7 @@ export const ProfileForm: FC = () => {
         placeholder={t('forms.ProfileForm.Name.title')}
         title={t('forms.ProfileForm.Name.title')}
       />
-      <Button type="submit" variant='primary' size="small" onClick={handleSubmit}>
+      <Button type="submit" variant="primary" size="small" onClick={handleSubmit}>
         {t('forms.ProfileForm.Button.title')}
       </Button>
     </form>
