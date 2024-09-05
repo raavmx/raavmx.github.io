@@ -126,7 +126,7 @@ export const ProductForm: FC = () => {
         submitCount={submitCount}
         errors={errors.category}
         touched={touched.category}
-        name="category"
+        //name="category"
         value={values.category}
         placeholder={t('forms.ProductForm.Category.title')}
         title={t('forms.ProductForm.Category.placeholder')}
