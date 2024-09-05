@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Tabs } from 'antd';
 import { AuthForm } from '../AuthForm/AuthForm';
-import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
+//import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
 
 const onChange = (key: string) => {
   console.log(key);
@@ -20,7 +20,7 @@ export const AuthComponent: FC = () => {
         {
           key: '2',
           label: 'Регистрация',
-          children: <RegistrationForm />,
+          // children: <RegistrationForm />,
         },
       ]}
       onChange={onChange}
