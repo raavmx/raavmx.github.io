@@ -29,16 +29,8 @@ export const AuthForm = () => {
   });
 
   const customHandleSubmit = (data: any) => {
-    // dispatch(
-    //   authRequest({
-    //     email: data.login,
-    //     password: data.password,
-    //   })
-    // );
     console.log('auth', data);
     reset();
-
-    //modal.close();
   };
 
   return (

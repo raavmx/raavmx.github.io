@@ -8,3 +8,8 @@ export type ProductFormValues = {
 };
 
 export type ProductFormErrors = Record<keyof ProductFormValues, string>;
+
+export type DdlItem = {
+  value: string;
+  label: string;
+};
