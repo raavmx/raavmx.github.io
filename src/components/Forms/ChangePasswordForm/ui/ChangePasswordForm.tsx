@@ -28,7 +28,7 @@ export const ChangePasswordForm: FC = memo(() => {
   };
 
   const formManager = useFormik<ChangePasswordFormValues>({
-    initialValues: { password: undefined, newPassword: undefined, repeatPassword: undefined },
+    initialValues: { password: '', newPassword: '', repeatPassword: '' },
     onSubmit: (values, actions) => {
       console.log('values: ', values);
       actions.resetForm();

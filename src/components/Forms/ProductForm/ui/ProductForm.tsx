@@ -5,7 +5,7 @@ import { Button } from '../../../Buttons/Button/Button';
 import { NumberFormField } from '../../../FormField/NumberFormField';
 import { TextFormField } from '../../../FormField/TextFormField';
 import { isNotDefinedString } from '../../../../utils/validation';
-import { ProductFormErrors, ProductFormValues } from '../types/ProductFormTypes';
+import { ProductFormErrors, ProductFormValues, DdlItem } from '../types/ProductFormTypes';
 import { TextAreaFormField } from '../../../FormField/TextAreaFormField';
 import { SelectFormField } from '../../../FormField/SelectFormField';
 import { categories } from '../../../../entities/Category/Const/CategoryConst';
@@ -32,12 +32,12 @@ export const ProductForm: FC = () => {
 
   const formManager = useFormik<ProductFormValues>({
     initialValues: {
-      name: undefined,
+      name: '',
       price: undefined,
       oldPrice: undefined,
-      desc: undefined,
-      photo: undefined,
-      category: undefined,
+      desc: '',
+      photo: '',
+      category: '',
     },
     onSubmit: (values, actions) => {
       console.log(values);
@@ -47,10 +47,22 @@ export const ProductForm: FC = () => {
   });
 
   const { handleSubmit, values, touched, errors, submitCount, handleBlur, handleChange } = formManager;
-  const options: { value: string; label: string }[] = [];
+  const categorySource: DdlItem[] = [];
   categories.map((values) => {
-    options.push({ value: values.id, label: values.name });
+    categorySource.push({ label: values.name, value: values.id });
   });
+
+  const handleChangePrice = (value: number) => {
+    formManager.setFieldValue('price', value);
+  };
+
+  const handleChangeOldPrice = (value: number) => {
+    formManager.setFieldValue('oldPrice', value);
+  };
+
+  const handleChangeCategory = (value: ChangeEvent<string>) => {
+    formManager.setFieldValue('category', value);
+  };
 
   return (
     <form>
@@ -80,9 +92,7 @@ export const ProductForm: FC = () => {
 
       <NumberFormField
         onBlur={handleBlur}
-        onChange={(value) => {
-          formManager.setFieldValue('price', value);
-        }}
+        onChange={handleChangePrice}
         submitCount={submitCount}
         errors={errors.price}
         touched={touched.price}
@@ -94,9 +104,7 @@ export const ProductForm: FC = () => {
 
       <NumberFormField
         onBlur={handleBlur}
-        onChange={(value) => {
-          formManager.setFieldValue('oldPrice', value);
-        }}
+        onChange={handleChangeOldPrice}
         submitCount={submitCount}
         errors={errors.oldPrice}
         touched={touched.oldPrice}
@@ -120,17 +128,14 @@ export const ProductForm: FC = () => {
 
       <SelectFormField
         onBlur={handleBlur}
-        onChange={(value: ChangeEvent<any>) => {
-          formManager.setFieldValue('category', value);
-        }}
+        onChange={handleChangeCategory}
         submitCount={submitCount}
         errors={errors.category}
         touched={touched.category}
-        //name="category"
         value={values.category}
         placeholder={t('forms.ProductForm.Category.title')}
         title={t('forms.ProductForm.Category.placeholder')}
-        options={options}
+        options={categorySource}
       />
 
       <Button type="submit" variant={'primary'} size="small" onClick={handleSubmit}>

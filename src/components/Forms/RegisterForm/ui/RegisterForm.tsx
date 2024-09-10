@@ -28,7 +28,7 @@ export const LoginForm = memo(() => {
   };
 
   const formManager = useFormik<LoginFormValues>({
-    initialValues: { email: undefined, password: undefined },
+    initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
       console.log('values: ', values);
       actions.resetForm();

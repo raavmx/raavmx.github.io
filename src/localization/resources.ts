@@ -25,6 +25,8 @@ export const resources = {
         power: 'Зарядные устройства',
         cable: 'Кабели',
         cover: 'Чехлы',
+        account: 'Профиль',
+        cart: 'Корзина',
       },
       errors: {
         is_required: 'необходимо заполнить',
@@ -138,6 +140,8 @@ export const resources = {
         power: 'Power',
         cable: 'Cable',
         cover: 'Cover',
+        account: 'Account',
+        cart: 'Cart',
       },
       errors: {
         is_required: 'required',
