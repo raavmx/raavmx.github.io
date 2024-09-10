@@ -3,7 +3,7 @@ import cn from 'classnames';
 import './Button.scss';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'info' | 'disabled';
+  variant?: 'primary' | 'secondary' | 'info' | 'danger' | 'disabled';
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   onClick?: () => void;

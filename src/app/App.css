@@ -21,4 +21,12 @@
   padding-top: 3em;
 }
 
+.app-content form{
+  width: 50%;
+}
 
+.cart{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
