@@ -57,7 +57,7 @@ export const Navigation: FC = (): ReactElement => {
                 })}
                 <li key="add" className="nav-item">
                   <a className="nav-link" title="Добавить товар" onClick={() => openModal()}>
-                    Добавить товар
+                    {t('navbar.addproduct')}
                   </a>
                 </li>
               </ul>

@@ -27,6 +27,7 @@ export const resources = {
         cover: 'Чехлы',
         account: 'Профиль',
         cart: 'Корзина',
+        addproduct: 'Добавить товар'
       },
       errors: {
         is_required: 'необходимо заполнить',
@@ -142,6 +143,7 @@ export const resources = {
         cover: 'Cover',
         account: 'Account',
         cart: 'Cart',
+        addproduct: 'Add product'
       },
       errors: {
         is_required: 'required',
