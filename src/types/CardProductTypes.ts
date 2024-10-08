@@ -1,7 +1,7 @@
 export interface CartProductModel {
+  id: string;
   image: string;
   title: string;
-  count: number;
   cost: number;
   style?: React.CSSProperties;
 }

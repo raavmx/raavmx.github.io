@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Locale } from '../../../localization';
+import { Locale } from '../../localization';
 import './LanguageSwitch.scss';
 
 export const LanguageSwitch: FC = (): ReactElement => {

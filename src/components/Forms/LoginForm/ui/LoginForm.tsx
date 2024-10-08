@@ -7,9 +7,15 @@ import { isNotDefinedString, isNotValidEmail } from '../../../../utils/validatio
 import { TextFormField } from '../../../FormField/TextFormField';
 import { PasswordFormField } from '../../../FormField/PasswordFormField';
 import { LoginFormErrors, LoginFormValues } from '../types/LoginFormTypes';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { tokenActions } from '../../../../app/redux/token';
+import { userActions } from '../../../../app/redux/user';
 
 export const LoginForm = memo(() => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const validate = (values: LoginFormValues) => {
     const errors = {} as LoginFormErrors;
     if (isNotDefinedString(values.email)) {
@@ -30,6 +36,9 @@ export const LoginForm = memo(() => {
   const formManager = useFormik<LoginFormValues>({
     initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
+      dispatch(tokenActions.generate());
+      dispatch(userActions.setInfo());
+      navigate('/');
       console.log('values: ', values);
       actions.resetForm();
     },

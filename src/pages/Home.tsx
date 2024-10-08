@@ -1,16 +1,11 @@
 import React, { FC } from 'react';
 import { ProductList } from '../components/Product/ProductList';
 import { Product, generateRandomProduct } from '../components/Product/types';
-
-const productList: Product[] = [
-  generateRandomProduct('55'),
-  generateRandomProduct('55'),
-  generateRandomProduct('55'),
-  generateRandomProduct('55'),
-  generateRandomProduct('55'),
-];
+import { useProducts } from '../hooks/useProducts';
 
 export const Home: FC = () => {
+  const { getProducts } = useProducts();
+const productList: Product[] = getProducts(100)
   return (
     <div className="app-content">
       <ProductList products={productList} />

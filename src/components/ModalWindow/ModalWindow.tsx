@@ -1,14 +1,19 @@
 import React, { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import './ModalWindow.scss';
+import { Navigate} from 'react-router-dom';
 
 export type TypeModal = {
   visible: boolean;
   children?: React.ReactNode;
   onCloseModalWindow?: (visible: boolean) => void;
+  token?: string;
 };
 
-export const ModalWindow: FC<TypeModal> = ({ visible = false, onCloseModalWindow, children }): ReactElement => {
+export const ModalWindow: FC<TypeModal> = ({ visible = false, onCloseModalWindow, children, token }): ReactElement => {
+  if(!token){
+    return <Navigate to="/auth"/>
+  }
   return (
     <div className={cn('modal', { open: visible })}>
       <div className="box">
