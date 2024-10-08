@@ -7,7 +7,7 @@ const meta: Meta<typeof ButtonBasket> = {
   component: ButtonBasket,
   tags: ['autodocs'],
   argTypes: {
-    counter: { control: 'number' },
+    count: { control: 'number' },
   },
 };
 

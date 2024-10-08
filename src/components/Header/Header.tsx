@@ -1,14 +1,14 @@
 import React, { FC, ReactElement } from 'react';
 import './Header.scss';
 import { Logo } from '../Logo/Logo';
-import { ThemeSwitch } from '../Switches/ThemeSwitch/ThemeSwitch';
-import { LanguageSwitch } from '../Switches/LanguageSwitch';
+import { ThemeSwitch } from '../../widgets/ThemeSwitch/ThemeSwitch';
+import { LanguageSwitch } from '../../widgets/LanguageSwitch';
 import { Navigation } from '../Navigation/Navigation';
 import { useTranslation } from 'react-i18next';
+import { Login } from 'src/widgets/Login/ui/Login';
 
 window.addEventListener('scroll', function () {
   document.getElementById('header-nav').classList.toggle('header-scroll', window.scrollY > 135);
-  console.log('scroll', this.window.scrollY);
 });
 
 export const Header: FC = (): ReactElement => {
@@ -23,6 +23,9 @@ export const Header: FC = (): ReactElement => {
       </div>
       <div className="col-2">
         <div className="d-flex justify-content-end">
+        <div className="btn-group me-2">
+            <Login height={25} width={25} />
+          </div>
           <div className="btn-group me-2">
             <ThemeSwitch />
           </div>

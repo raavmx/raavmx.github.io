@@ -27,8 +27,8 @@ export type Product = {
 };
 
 //создание случайного продукта
-export const generateRandomProduct = (createdAt: string): Product => {
-  const productId = getRandomId(); //новый id продукта
+export const generateRandomProduct = (createdAt: string , id:number): Product => {
+  const productId = id.toString() //  getRandomId(); //новый id продукта
   const category = getRandomElement(categories); //получаем категорию
   const price = getRandomNumber(10000); //цена
   return {

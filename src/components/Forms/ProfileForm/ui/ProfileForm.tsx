@@ -5,10 +5,12 @@ import { Button } from '../../../Buttons/Button/Button';
 import { TextFormField } from '../../../FormField/TextFormField';
 import { TextAreaFormField } from '../../../FormField/TextAreaFormField';
 import { ProfileFormErrors, ProfileFormValues } from '../types/ProfileFormTypes';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../../../app/redux/store';
 
 export const ProfileForm: FC = () => {
   const { t } = useTranslation();
-
+  const user = useSelector<AppState, AppState['user']>((state): AppState['user'] => state.user);
   const validate = (values: ProfileFormValues) => {
     const errors = {} as ProfileFormErrors;
     if (!values.name) {
@@ -18,7 +20,7 @@ export const ProfileForm: FC = () => {
   };
 
   const formManager = useFormik<ProfileFormValues>({
-    initialValues: { name: '', about: '' },
+    initialValues: { name: user.login, about: user.about},
     onSubmit: (values, actions) => {
       console.log('values: ', values);
       actions.resetForm();

@@ -8,21 +8,21 @@ type ProductList = {
 
 export const ProductList: FC<ProductList> = ({ products }): ReactElement => {
   const [productsArray, setProductsArray] = useState(products);
-  const { getRandomProduct } = useProducts();
+  const { getStaticProducts } = useProducts();
 
-  useEffect(() => {
-    const cards = document.getElementsByClassName('product-card');
-    if (cards?.length > 0) lastCardObserver.observe(cards[cards.length - 1]);
-  }, [productsArray]);
+  // useEffect(() => {
+  //   const cards = document.getElementsByClassName('product-card');
+  //   if (cards?.length > 0) lastCardObserver.observe(cards[cards.length - 1]);
+  // }, [productsArray]);
 
-  const lastCardObserver = new IntersectionObserver((entries) => {
-    entries.forEach(({ isIntersecting }) => {
-      isIntersecting && setProductsArray([...productsArray, getRandomProduct()]);
-    });
-  }, {});
+  // const lastCardObserver = new IntersectionObserver((entries) => {
+  //   entries.forEach(({ isIntersecting }) => {
+  //     isIntersecting && setProductsArray([...productsArray, getProducts(1)[0]);
+  //   });
+  // }, {});
 
   return (
-    <section className="container-fluid pt-5">
+    <section className="container-fluid p-5">
       <div className="row">
         {productsArray?.length > 0 &&
           productsArray.map(({ id, name, photo, desc, oldPrice, price, createdAt, category }) => {

@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { ModalWindow } from '../ModalWindow';
 import { Portal } from '../Portal';
 import { ProductForm } from '../Forms/ProductForm/ui/ProductForm';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../app/redux/store';
 
 const navItems = [
   { name: 'navbar.home', path: '' },
@@ -19,6 +21,7 @@ const navItems = [
 export const Navigation: FC = (): ReactElement => {
   const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
+  const token = useSelector<AppState, AppState['token']>((state) => state.token);
   const openModal = (): void => {
     setShowModal(true);
   };
@@ -67,8 +70,8 @@ export const Navigation: FC = (): ReactElement => {
       </nav>
       {showModal && (
         <Portal>
-          <ModalWindow visible={showModal} onCloseModalWindow={closeModal}>
-            <ProductForm></ProductForm>
+          <ModalWindow visible={showModal} onCloseModalWindow={closeModal} token={token}>
+            <ProductForm closeModal={closeModal}></ProductForm>
           </ModalWindow>
         </Portal>
       )}

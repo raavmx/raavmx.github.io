@@ -10,7 +10,11 @@ import { TextAreaFormField } from '../../../FormField/TextAreaFormField';
 import { SelectFormField } from '../../../FormField/SelectFormField';
 import { categories } from '../../../../entities/Category/Const/CategoryConst';
 
-export const ProductForm: FC = () => {
+export type TypeForm = {
+  closeModal?: () => void;
+};
+
+export const ProductForm: FC<TypeForm> = ({ closeModal }) => {
   const { t } = useTranslation();
 
   const validate = (values: ProductFormValues) => {
@@ -40,8 +44,10 @@ export const ProductForm: FC = () => {
       category: '',
     },
     onSubmit: (values, actions) => {
-      console.log(values);
+      console.log('poduct added',values);
       actions.resetForm();
+      if(closeModal)
+        closeModal();
     },
     validate: validate,
   });

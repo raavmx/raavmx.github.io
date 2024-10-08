@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useContext } from 'react';
-import { ThemeProvider, ThemeContext } from '../../../helper/ThemeProvider';
+import { ThemeProvider, ThemeContext } from '../../helper/ThemeProvider';
 
 import './ThemeSwitch.scss';
 import cn from 'classnames';

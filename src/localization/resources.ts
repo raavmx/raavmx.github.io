@@ -3,8 +3,9 @@ export const resources = {
     translation: {
       account: {
         title: 'Учётная запись',
-        signIn: 'Войти',
-        signUp: 'Зарегистрироваться',
+        sign_in: 'Войти',
+        sign_up: 'Зарегистрироваться',
+        logout: 'Выйти',
       },
       logo: {
         title: 'Нужные вещи',
@@ -119,8 +120,9 @@ export const resources = {
     translation: {
       account: {
         title: 'Account',
-        signIn: 'Sign In',
-        signUp: 'Sign Up',
+        sign_in: 'Sign In',
+        sign_up: 'Sign Up',
+        logout: 'Logout',
       },
       logo: {
         title: 'Vsyakiy hlam',
