@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Tabs } from 'antd';
-import { AuthForm } from '../AuthForm/AuthForm';
+import { AuthForm } from '../AuthForm_/AuthForm';
 //import { RegistrationForm } from '../RegistrationForm/RegistrationForm';
 
 const onChange = (key: string) => {

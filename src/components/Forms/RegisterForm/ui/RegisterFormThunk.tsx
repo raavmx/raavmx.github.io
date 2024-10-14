@@ -1,42 +1,46 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { Button } from '../../../Buttons/Button/Button';
 import { TextFormField } from '../../../FormField/TextFormField';
 import { PasswordFormField } from '../../../FormField/PasswordFormField';
 import { RegisterFormValues } from 'src/types/RegisterFormTypes';
-import { useDispatch } from 'react-redux';
-import { signup } from '../../../../shared/api/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../../../app/redux/user';
 import { message } from 'antd';
-import { userActions } from '../../../../app/redux/user';
+import { AppDispatch, AppState } from 'src/app/redux/store';
 
-export const RegisterForm = memo(() => {
+export const RegisterFormThunk = memo(() => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
+  const { error, status } = useSelector<AppState, AppState['user']>((state) => state.user);
 
   const formManager = useFormik<RegisterFormValues>({
     initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
-      signup({ email: values.email, password: values.password })
-        .then((res) => {
-          dispatch(userActions.setInfo(res));
-          message.success(res.profile.email + ' Ok', 10);
+      dispatch(register(values)).then((res) => {
+        console.log('form register', res);
+        if (status == 'resolve') {
+          message.success(res.meta.arg.email + ' Ok', 10);
           actions.resetForm();
-        })
-        .catch((error) => {
-          message.error(error.message, 10);
-        });
+        }
+      });
     },
     validate: (values) => {
       // console.log('validate on client skip', values);
     },
   });
 
+  useEffect(() => {
+    if (error) {
+      message.error(error);
+    }
+  }, [error]);
   const { handleSubmit, values, touched, errors, submitCount, handleBlur, handleChange } = formManager;
 
   return (
     <>
-      <h4 className="p-4">{t('forms.RegisterForm.Title')}</h4>
+      <h4 className="p-4">{t('forms.RegisterForm.Title')} redux-thunk</h4>
       <form>
         <TextFormField
           onBlur={handleBlur}
@@ -70,4 +74,4 @@ export const RegisterForm = memo(() => {
   );
 });
 
-RegisterForm.displayName = 'RegisterForm';
+RegisterFormThunk.displayName = 'RegisterFormThunk';

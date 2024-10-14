@@ -16,6 +16,7 @@ const navItems = [
   // { name: 'navbar.contact', path: '' },
   { name: 'navbar.account', path: 'account' },
   { name: 'navbar.cart', path: 'cart' },
+  { name: 'navbar.register', path: 'register' },
 ];
 
 export const Navigation: FC = (): ReactElement => {

@@ -1,49 +1,69 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { Credential, signup } from '../../shared/api/user';
 
-const userData = {
-  id: "2",
-  name: "admn",
-  email: "admin@aa.aa",
-  isAdmin: true,
-}
+export const register = createAsyncThunk(
+  'user/register',
+  async (credential: Credential, { rejectWithValue, dispatch }) => {
+    console.log('try by thunk', credential)
+    try {
+      const data = await signup(credential);
+      dispatch(userActions.setInfo(data));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+type initialStateType = {
+  status: 'loading' | 'resolve' | 'rejected';
+  error: string;
+  user: User;
+};
+
 interface User {
   id: string,
   name: string,
   email: string,
   isAdmin: boolean,
+  about: string;
+  signUpDate: string;
 }
-interface UserState {
-  access_token?: string | null,
-  userInfo: User | null,
-  isAuthenticated: boolean,
-}
-
-const initialState: UserState = {
-  access_token: localStorage.getItem('access_token') || null,
-  userInfo: JSON.parse(localStorage.getItem('userInfo')) || null,
-  isAuthenticated: Boolean(localStorage.getItem('isAuthenticated')) || false,
-};
 
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    login: JSON.parse(localStorage.getItem('user'))?.login,
-    about: JSON.parse(localStorage.getItem('user'))?.about,
-  },
+    user: {
+      name: undefined,
+      id: undefined,
+      about: undefined,
+      email: undefined,
+      signUpDate: undefined,
+    },
+    error: undefined,
+    status: undefined,
+  } as initialStateType,
   reducers: {
-    setInfo: () => {
-      localStorage.setItem(
-        'user',
-        JSON.stringify({
-          login: 'test_profile',
-          about:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-        })
-      );
+    setInfo: (state, action) => {
+      const user = action.payload.profile;
+      state.user.email = user.email;
+      state.user.signUpDate = user.signUpDate;
+
+      console.log(state.user.email);
+      console.log(state.user.about);
+      console.log(state.user.signUpDate);
     },
-    clearInfo: () => {
-      localStorage.removeItem('user');
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(register.pending, (state, action) => {
+      state.status = 'loading';
+    });
+    builder.addCase(register.fulfilled, (state, action) => {
+      state.status = 'resolve';
+    });
+    builder.addCase(register.rejected, (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload as string;
+    });
   },
 });
 

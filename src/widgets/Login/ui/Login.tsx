@@ -5,7 +5,6 @@ import { AppState } from '../../../app/redux/store';
 import { Link } from 'react-router-dom';
 import { CiLogin, CiLogout } from 'react-icons/ci';
 import { tokenActions } from '../../../app/redux/token';
-import { userActions } from '../../../app/redux/user';
 import { useTranslation } from 'react-i18next';
 
 export const Login: FC<LoginProps> = ({ width, height }) => {
@@ -14,7 +13,6 @@ export const Login: FC<LoginProps> = ({ width, height }) => {
   const { t } = useTranslation();
   const onLogout = () => {
     dispatch(tokenActions.clear());
-    dispatch(userActions.clearInfo());
   };
 
   return (

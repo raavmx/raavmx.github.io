@@ -12,7 +12,11 @@ import { useNavigate } from 'react-router-dom';
 import { tokenActions } from '../../../../app/redux/token';
 import { userActions } from '../../../../app/redux/user';
 
-export const LoginForm = memo(() => {
+export interface LoginFormProps extends LoginFormValues {
+  title: string;
+}
+
+export const LoginForm = memo(({ title }: LoginFormProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,7 +41,7 @@ export const LoginForm = memo(() => {
     initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
       dispatch(tokenActions.generate());
-      dispatch(userActions.setInfo());
+    //  dispatch(userActions.setInfo());
       navigate('/');
       console.log('values: ', values);
       actions.resetForm();
@@ -49,6 +53,7 @@ export const LoginForm = memo(() => {
 
   return (
     <form>
+      <h5>{title}</h5>
       <TextFormField
         onBlur={handleBlur}
         onChange={handleChange}

@@ -28,13 +28,17 @@ export const resources = {
         cover: 'Чехлы',
         account: 'Профиль',
         cart: 'Корзина',
-        addproduct: 'Добавить товар'
+        addproduct: 'Добавить товар',
+        register: 'Регистрация'
       },
       errors: {
         is_required: 'необходимо заполнить',
         not_same_password: 'пароли не совпадают',
         is_not_valid_email: 'Не верный формат email',
         number_is_lower_then_zero: 'Число должно быть больше нуля',
+      },
+      info:{
+        registered:"Зарегистрирован",
       },
       forms: {
         ProfileForm: {
@@ -81,6 +85,20 @@ export const resources = {
           },
           Button: {
             title: 'Войти',
+          },
+        },
+        RegisterForm: {
+          Title: 'Регистрация',
+          Email: {
+            title: 'Email',
+            placeholder: 'Укажите email',
+          },
+          Password: {
+            title: 'Пароль',
+            placeholder: 'Введите пароль',
+          },
+          Button: {
+            title: 'Регистрация',
           },
         },
         ProductForm: {
@@ -145,13 +163,17 @@ export const resources = {
         cover: 'Cover',
         account: 'Account',
         cart: 'Cart',
-        addproduct: 'Add product'
+        addproduct: 'Add product',
+        register: 'Registration'
       },
       errors: {
         is_required: 'required',
         not_same_password: 'not same password',
         is_not_valid_email: 'Email is not valid',
         number_is_lower_then_zero: 'Number need to be upper then zero',
+      },
+      info:{
+        registered:"Registered",
       },
       forms: {
         ProfileForm: {
@@ -198,6 +220,20 @@ export const resources = {
           },
           Button: {
             title: 'Sign in',
+          },
+        },
+        RegisterForm: {
+          Title: 'Sign up',
+          Email: {
+            title: 'Email',
+            placeholder: 'Enter email',
+          },
+          Password: {
+            title: 'Password',
+            placeholder: 'Enter password',
+          },
+          Button: {
+            title: 'Sign up',
           },
         },
         ProductForm: {
