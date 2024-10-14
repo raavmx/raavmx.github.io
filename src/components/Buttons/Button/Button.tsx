@@ -3,7 +3,7 @@ import cn from 'classnames';
 import './Button.scss';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'info' | 'danger' | 'disabled';
+  variant?: 'primary' | 'secondary' | 'info' | 'danger' | 'disabled' |'clean';
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   onClick?: () => void;
@@ -11,7 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = ({
   children,
-  variant = 'primary',
+  variant = "primary",
   fullWidth,
   size,
   className,

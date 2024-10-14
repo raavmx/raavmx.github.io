@@ -66,6 +66,7 @@
     "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.8",
     "@reduxjs/toolkit": "^2.2.7",
     "antd": "^5.20.1",
     "classnames": "^2.5.1",

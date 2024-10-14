@@ -20,7 +20,7 @@ export const ProfileForm: FC = () => {
   };
 
   const formManager = useFormik<ProfileFormValues>({
-    initialValues: { name: user.login, about: user.about},
+    initialValues: { name: user.user.email, about: user.user.about},
     onSubmit: (values, actions) => {
       console.log('values: ', values);
       actions.resetForm();

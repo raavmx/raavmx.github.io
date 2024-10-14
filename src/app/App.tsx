@@ -12,6 +12,7 @@ import { Auth } from 'src/pages/Auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { programActions } from './redux/program';
 import { ProtectedRoute } from '../helper/ProtectedRoute';
+import { Register } from 'src/pages/Register';
 
 function App(): ReactElement {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ function App(): ReactElement {
             }
           />
           <Route path="auth" element={<Auth />} />
+          <Route path="register" element={<Register />} />
         </Routes>
       </Layout>
     </BrowserRouter>
