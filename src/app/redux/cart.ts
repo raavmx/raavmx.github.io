@@ -12,7 +12,7 @@ const cartSlice = createSlice({
       } else {
         state.products.push({ productId: productId, count: 1 });
       }
-      console.log(JSON.stringify(state.products));
+
       localStorage.setItem('cart', JSON.stringify(state.products));
     },
     delete: (state, { payload: { productId, count } }) => {

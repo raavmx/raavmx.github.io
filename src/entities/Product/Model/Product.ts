@@ -20,6 +20,7 @@ export class Product {
   oldPrice?: number;
   price: number;
   category: Category;
+  commandId: string;
 
   constructor(
     id: string,

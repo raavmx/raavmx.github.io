@@ -11,6 +11,6 @@ export function* clearToken(): Generator {
 }
 
 export function* tokenSaga() {
-  yield takeEvery(tokenActions.generate().type, setToken);
+  yield takeEvery(tokenActions.generate.type, setToken);
   yield takeEvery(tokenActions.clear().type, clearToken);
 }

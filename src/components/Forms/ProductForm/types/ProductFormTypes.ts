@@ -1,9 +1,13 @@
+import { UploadFile } from 'antd';
+
 export type ProductFormValues = {
   name: string;
   price: number;
   oldPrice?: number;
   desc?: string;
-  photo: string;
+  photo: UploadFile;
+  photoErrors: string;
+  photoTouched: string;
   category: string;
 };
 

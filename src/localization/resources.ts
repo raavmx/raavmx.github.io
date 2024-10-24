@@ -29,7 +29,8 @@ export const resources = {
         account: 'Профиль',
         cart: 'Корзина',
         addproduct: 'Добавить товар',
-        register: 'Регистрация'
+        category: 'Категории',
+        register: 'Регистрация',
       },
       errors: {
         is_required: 'необходимо заполнить',
@@ -37,8 +38,8 @@ export const resources = {
         is_not_valid_email: 'Не верный формат email',
         number_is_lower_then_zero: 'Число должно быть больше нуля',
       },
-      info:{
-        registered:"Зарегистрирован",
+      info: {
+        registered: 'Зарегистрирован',
       },
       forms: {
         ProfileForm: {
@@ -130,6 +131,17 @@ export const resources = {
           Button: {
             title: 'Добавить',
           },
+          SuccessMessage:'Новый продукт добавлен'
+        },
+        AddCategoryForm: {
+          Title: 'Новая категория',
+          Name: {
+            title: 'Название',
+            placeholder: 'Укажите название',
+          },
+          Button: {
+            title: 'Сохранить',
+          },
         },
       },
     },
@@ -164,7 +176,8 @@ export const resources = {
         account: 'Account',
         cart: 'Cart',
         addproduct: 'Add product',
-        register: 'Registration'
+        category: 'Categories',
+        register: 'Registration',
       },
       errors: {
         is_required: 'required',
@@ -172,8 +185,8 @@ export const resources = {
         is_not_valid_email: 'Email is not valid',
         number_is_lower_then_zero: 'Number need to be upper then zero',
       },
-      info:{
-        registered:"Registered",
+      info: {
+        registered: 'Registered',
       },
       forms: {
         ProfileForm: {
@@ -264,6 +277,17 @@ export const resources = {
           },
           Button: {
             title: 'Add',
+          },
+          SuccessMessage:'Add product success'
+        },
+        AddCategoryForm: {
+          Title: 'New category',
+          Name: {
+            title: 'Name',
+            placeholder: 'Name',
+          },
+          Button: {
+            title: 'Save',
           },
         },
       },

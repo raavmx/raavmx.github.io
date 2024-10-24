@@ -5,6 +5,7 @@ import { token } from './token';
 import { cart } from './cart';
 import { user } from './user';
 import { program } from './program';
+import { category } from './category';
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     cart,
     user,
     program,
+    category,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });

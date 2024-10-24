@@ -10,25 +10,24 @@ import { AppState } from '../../app/redux/store';
 
 const navItems = [
   { name: 'navbar.home', path: '' },
-  // { name: 'navbar.notebook', path: '' },
-  // { name: 'navbar.phone', path: '' },
-  // { name: 'navbar.accessories', path: '' },
-  // { name: 'navbar.contact', path: '' },
   { name: 'navbar.account', path: 'account' },
   { name: 'navbar.cart', path: 'cart' },
   { name: 'navbar.register', path: 'register' },
+  { name: 'navbar.category', path: 'category' },
 ];
 
 export const Navigation: FC = (): ReactElement => {
   const { t } = useTranslation();
-  const [showModal, setShowModal] = useState(false);
+  const [showAddProduct, setAddProductModal] = useState(false);
+
   const token = useSelector<AppState, AppState['token']>((state) => state.token);
-  const openModal = (): void => {
-    setShowModal(true);
+  const openProductModal = (): void => {
+    setAddProductModal(true);
   };
-  const closeModal = (): void => {
-    setShowModal(false);
+  const closeProductModal = (): void => {
+    setAddProductModal(false);
   };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -60,7 +59,7 @@ export const Navigation: FC = (): ReactElement => {
                   );
                 })}
                 <li key="add" className="nav-item">
-                  <a className="nav-link" title="Добавить товар" onClick={() => openModal()}>
+                  <a className="nav-link" title="Добавить товар" onClick={() => openProductModal()}>
                     {t('navbar.addproduct')}
                   </a>
                 </li>
@@ -69,10 +68,10 @@ export const Navigation: FC = (): ReactElement => {
           </div>
         </div>
       </nav>
-      {showModal && (
+      {showAddProduct && (
         <Portal>
-          <ModalWindow visible={showModal} onCloseModalWindow={closeModal} token={token}>
-            <ProductForm closeModal={closeModal}></ProductForm>
+          <ModalWindow visible={showAddProduct} onCloseModalWindow={closeProductModal} token={token}>
+            <ProductForm closeModal={closeProductModal}></ProductForm>
           </ModalWindow>
         </Portal>
       )}

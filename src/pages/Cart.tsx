@@ -1,27 +1,17 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, useMemo } from 'react';
 import { CartProduct } from '../components/Product/CartProduct/CartProduct';
-import { useProducts } from '../hooks/useProducts';
 import { Product } from '../components/Product/types';
 import { useSelector } from 'react-redux';
 import { AppState } from '../app/redux/store';
+import { useQuery } from '@apollo/client';
+import { GET_PRODUCT_BY_IDS, ProductsData } from 'src/helper/connections/productConnections';
 
 export const Cart: FC = () => {
-  const { getProducts } = useProducts();
-  const [products, setProducts] = useState<Product[]>([]);
-  const cart = useSelector<AppState, AppState['cart']>((state): AppState['cart'] => state.cart);
-
-  useEffect(() => {
-    let cartProducts: Product[] = [];
-    const cartIds: string[] = [];
-    cart.products.map((cart) => {
-      cartIds.push(cart.productId);
-    });
-    let getproducts = getProducts(10);
-    cartProducts = getproducts.filter((p: Product) => cartIds.includes(p.id));
-    setProducts(cartProducts);
-  }, [JSON.stringify(cart.products)]);
-
-  if (!products.length || products.length == 0) {
+  const { products } = useSelector<AppState, AppState['cart']>((state): AppState['cart'] => state.cart);
+  const { data } = useQuery<ProductsData>(GET_PRODUCT_BY_IDS, { variables: { ids: products.map((p) => p.productId) } });
+  const cart = data?.products?.getMany?.data;
+  console.log('cart', products);
+  if (!cart || cart.length == 0) {
     return (
       <div className="app-content">
         <h4>Корзина пуста</h4>
@@ -31,7 +21,7 @@ export const Cart: FC = () => {
   return (
     <div className="app-content">
       <div className="cart">
-        {products.map((product: Product) => {
+        {cart.map((product: Product) => {
           return (
             <CartProduct
               key={product.id}
@@ -39,7 +29,6 @@ export const Cart: FC = () => {
               title={product.name}
               image={product.photo}
               cost={product.price}
-              style={{ padding: '5px 0' }}
             />
           );
         })}
