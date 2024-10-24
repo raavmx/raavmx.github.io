@@ -1,4 +1,6 @@
 import { Help } from '../components/FormItem/FormItem';
+import { ApolloError } from '@apollo/client';
+import { UploadFile } from 'antd';
 
 export type ValidateStatus = 'error' | '';
 
@@ -24,4 +26,24 @@ export const isNotValidEmail = (string?: string): boolean => {
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   );
   return regexp.test(string);
+};
+
+export const isValidFileType = ({ type }: UploadFile, allowedTypes?: string) => {
+  if (!allowedTypes) {
+    return true;
+  }
+  if (type) {
+    return type.includes(allowedTypes);
+  }
+};
+
+export const getServerErrorCode = (error: ApolloError) => {
+  let errText = null;
+  if ('graphQLErrors' in error && Array.isArray(error.graphQLErrors)) {
+    error.graphQLErrors.forEach((err) => {
+      errText = err.extensions.code;
+    });
+  }
+
+  return errText ?? 'INTERNAL_SERVER_ERROR';
 };

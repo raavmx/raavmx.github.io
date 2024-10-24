@@ -4,6 +4,7 @@
   border-radius: 4px;
   background-color: var(--block-color);
   position: relative;
+  height: 400px;
 
   &:hover {
     box-shadow: 0 10px 20px -15px rgba(0, 0, 0, 0.75);
@@ -13,7 +14,9 @@
     text-align: center;
 
     img {
-      max-height: 250px;
+      height: 200px;
+      width: 100%;
+      padding: 10px;
     }
   }
 
@@ -27,7 +30,6 @@
         height: 45px;
         overflow: hidden;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         text-decoration: none;
         transition: all 0.3s;
@@ -40,7 +42,6 @@
 
     .product-excerpt {
       display: -webkit-box;
-      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       height: 45px;
       overflow: hidden;

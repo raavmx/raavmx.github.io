@@ -1,17 +1,18 @@
 import React, { memo } from 'react';
-
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import { Button } from '../../../Buttons/Button/Button';
-import { isNotDefinedString, isNotValidEmail } from '../../../../utils/validation';
+import { isNotDefinedString, isNotValidEmail, getServerErrorCode } from '../../../../utils/validation';
 import { TextFormField } from '../../../FormField/TextFormField';
 import { PasswordFormField } from '../../../FormField/PasswordFormField';
 import { LoginFormErrors, LoginFormValues } from '../types/LoginFormTypes';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { tokenActions } from '../../../../app/redux/token';
-import { userActions } from '../../../../app/redux/user';
-
+import { useMutation } from '@apollo/client';
+import { message } from 'antd';
+import { SIGN_IN, SigninData } from 'src/helper/connections/profileConnections';
+import { userActions } from 'src/app/redux/user';
 export interface LoginFormProps extends LoginFormValues {
   title: string;
 }
@@ -20,6 +21,21 @@ export const LoginForm = memo(({ title }: LoginFormProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [signin] = useMutation<SigninData, LoginFormValues>(SIGN_IN, {
+    onCompleted: (data) => {
+      const token = data.profile.signin.token;
+      if (data && token) {
+        dispatch(tokenActions.generate(token));
+        dispatch(userActions.setInfo(data.profile.signin));
+        navigate('/');
+      }
+    },
+    onError: (error) => {
+      message.error(t(`Errors.${getServerErrorCode(error)}`));
+    },
+  });
+
   const validate = (values: LoginFormValues) => {
     const errors = {} as LoginFormErrors;
     if (isNotDefinedString(values.email)) {
@@ -40,11 +56,7 @@ export const LoginForm = memo(({ title }: LoginFormProps) => {
   const formManager = useFormik<LoginFormValues>({
     initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
-      dispatch(tokenActions.generate());
-    //  dispatch(userActions.setInfo());
-      navigate('/');
-      console.log('values: ', values);
-      actions.resetForm();
+      signin({ variables: { email: values.email, password: values.password } });
     },
     validate: validate,
   });

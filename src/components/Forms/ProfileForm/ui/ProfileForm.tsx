@@ -1,30 +1,36 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../../../Buttons/Button/Button';
 import { TextFormField } from '../../../FormField/TextFormField';
-import { TextAreaFormField } from '../../../FormField/TextAreaFormField';
 import { ProfileFormErrors, ProfileFormValues } from '../types/ProfileFormTypes';
+import { isNotDefinedString } from '../../../../utils/validation';
 import { useSelector } from 'react-redux';
-import { AppState } from '../../../../app/redux/store';
+import { AppState } from 'src/app/redux/store';
 
 export const ProfileForm: FC = () => {
   const { t } = useTranslation();
-  const user = useSelector<AppState, AppState['user']>((state): AppState['user'] => state.user);
+  const { user } = useSelector<AppState, AppState['user']>((state): AppState['user'] => state.user);
+
   const validate = (values: ProfileFormValues) => {
     const errors = {} as ProfileFormErrors;
-    if (!values.name) {
-      errors.name = t('errors.is_required');
+    if (isNotDefinedString(values.name)) {
+      errors.name = t(`errors.is_required`);
     }
     return errors;
   };
 
+  useEffect(() => {
+    console.log('user', user);
+  }, [user]);
+
   const formManager = useFormik<ProfileFormValues>({
-    initialValues: { name: user.user.email, about: user.user.about},
+    initialValues: { name: user.name },
     onSubmit: (values, actions) => {
       console.log('values: ', values);
       actions.resetForm();
     },
+
     validate: validate,
   });
 
@@ -41,18 +47,6 @@ export const ProfileForm: FC = () => {
         submitCount={submitCount}
         touched={touched.name}
         name="name"
-        placeholder={t('forms.ProfileForm.Name.placeholder')}
-        title={t('forms.ProfileForm.Name.title')}
-      />
-
-      <TextAreaFormField
-        onBlur={handleBlur}
-        onChange={handleChange}
-        value={values.about}
-        errors={errors.about}
-        submitCount={submitCount}
-        touched={touched.about}
-        name="about"
         placeholder={t('forms.ProfileForm.Name.title')}
         title={t('forms.ProfileForm.Name.title')}
       />

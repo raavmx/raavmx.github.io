@@ -13,6 +13,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { programActions } from './redux/program';
 import { ProtectedRoute } from '../helper/ProtectedRoute';
 import { Register } from 'src/pages/Register';
+import { ApolloProvider } from '@apollo/client';
+import client from 'src/helper/connections/client';
+import {Category} from '../pages/Category'
 
 function App(): ReactElement {
   const dispatch = useDispatch();
@@ -21,34 +24,46 @@ function App(): ReactElement {
     dispatch(programActions.initialise());
   }, [dispatch]);
   return (
-    <BrowserRouter>
-      <LocalizationInitiator />
-      <Layout>
-        <Header />
-        <Routes>
-          <Route
-            path="account"
-            element={
-              <ProtectedRoute>
-                <Account />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="cart" element={<Cart />} />
-          <Route path="" element={<Home />} />
-          <Route
-            path="productAdd"
-            element={
-              <ProtectedRoute>
-                <AddProduct />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="auth" element={<Auth />} />
-          <Route path="register" element={<Register />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+    <>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <LocalizationInitiator />
+          <Layout>
+            <Header />
+            <Routes>
+              <Route
+                path="account"
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="cart" element={<Cart />} />
+              <Route path="" element={<Home />} />
+              <Route
+                path="productAdd"
+                element={
+                  <ProtectedRoute>
+                    <AddProduct />
+                  </ProtectedRoute>
+                }
+              />
+                            <Route
+                path="category"
+                element={
+                  <ProtectedRoute>
+                    <Category />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="auth" element={<Auth />} />
+              <Route path="register" element={<Register />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ApolloProvider>
+    </>
   );
 }
 

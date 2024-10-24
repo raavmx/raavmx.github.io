@@ -33,7 +33,7 @@ export const ShortProductCard: FC<Product> = (product): ReactElement => {
         </div>
         <div className="product-details">
           <h4>
-            <a href="products.html">{name}</a>
+            <a href="/">{name}</a>
           </h4>
           <p className="product-excerpt">{desc}</p>
           <div className="product-bottom-details d-flex justify-content-between">

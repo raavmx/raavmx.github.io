@@ -1,9 +1,3 @@
-/**
- * Категория
- * - id (строка)
- * - name (строка)
- * - photo (строка, необязательно)
- **/
 export class Category {
   id: string;
   name: string;

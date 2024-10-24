@@ -4,11 +4,14 @@ import { useFormik } from 'formik';
 import { Button } from '../../../Buttons/Button/Button';
 import { TextFormField } from '../../../FormField/TextFormField';
 import { PasswordFormField } from '../../../FormField/PasswordFormField';
-import { RegisterFormValues } from 'src/types/RegisterFormTypes';
+import { RegisterFormValues, RegisterFormErrors } from 'src/types/RegisterFormTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../../../app/redux/user';
+import { signUp, userActions } from '../../../../app/redux/user';
 import { message } from 'antd';
 import { AppDispatch, AppState } from 'src/app/redux/store';
+import { isNotDefinedString, isNotValidEmail } from 'src/utils/validation';
+import { commandId } from 'src/app/constants/Api';
+import { useNavigate } from 'react-router-dom';
 
 export const RegisterFormThunk = memo(() => {
   const { t } = useTranslation();
@@ -18,22 +21,35 @@ export const RegisterFormThunk = memo(() => {
   const formManager = useFormik<RegisterFormValues>({
     initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
-      dispatch(register(values)).then((res) => {
+      dispatch(signUp({ email: values.email, password: values.password, commandId: commandId })).then((res) => {
         console.log('form register', res);
-        if (status == 'resolve') {
-          message.success(res.meta.arg.email + ' Ok', 10);
-          actions.resetForm();
+        if (res.type.includes('fulfilled')) {
+          message.success(t(`Messages.SignupSuccess`));
         }
       });
+      actions.resetForm();
     },
     validate: (values) => {
-      // console.log('validate on client skip', values);
+      const errors = {} as RegisterFormErrors;
+      if (isNotDefinedString(values.email)) {
+        errors.email = t(`Errors.is_required`);
+      }
+
+      if (!isNotDefinedString(values.email) && !isNotValidEmail(values.email)) {
+        errors.email = t(`Errors.is_not_valid_email`);
+      }
+
+      if (isNotDefinedString(values.password)) {
+        errors.password = t(`Errors.is_required`);
+      }
+      return errors;
     },
   });
 
   useEffect(() => {
     if (error) {
       message.error(error);
+      dispatch(userActions.clearError());
     }
   }, [error]);
   const { handleSubmit, values, touched, errors, submitCount, handleBlur, handleChange } = formManager;
