@@ -6,21 +6,20 @@ import { ModalWindow } from '../ModalWindow';
 import { Portal } from '../Portal';
 import { ProductForm } from '../Forms/ProductForm/ui/ProductForm';
 import { useSelector } from 'react-redux';
-import { AppState } from '../../app/redux/store';
+import { getIsAuth } from 'src/features/Auth/service/user';
 
 const navItems = [
   { name: 'navbar.home', path: '' },
-  { name: 'navbar.account', path: 'account' },
   { name: 'navbar.cart', path: 'cart' },
-  { name: 'navbar.register', path: 'register' },
   { name: 'navbar.category', path: 'category' },
+  { name: 'navbar.register', path: 'register' },
+  { name: 'navbar.account', path: 'account' },
 ];
 
 export const Navigation: FC = (): ReactElement => {
   const { t } = useTranslation();
   const [showAddProduct, setAddProductModal] = useState(false);
-
-  const token = useSelector<AppState, AppState['token']>((state) => state.token);
+  const isAuth = useSelector(getIsAuth);
   const openProductModal = (): void => {
     setAddProductModal(true);
   };
@@ -68,9 +67,9 @@ export const Navigation: FC = (): ReactElement => {
           </div>
         </div>
       </nav>
-      {showAddProduct && (
+      {isAuth && showAddProduct && (
         <Portal>
-          <ModalWindow visible={showAddProduct} onCloseModalWindow={closeProductModal} token={token}>
+          <ModalWindow visible={showAddProduct} onCloseModalWindow={closeProductModal} isAuth={isAuth}>
             <ProductForm closeModal={closeProductModal}></ProductForm>
           </ModalWindow>
         </Portal>

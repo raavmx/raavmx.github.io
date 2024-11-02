@@ -1,6 +1,6 @@
 export const resources = {
   Ru: {
-    translation: {
+    translation: {      
       account: {
         title: 'Учётная запись',
         sign_in: 'Войти',
@@ -41,11 +41,15 @@ export const resources = {
       info: {
         registered: 'Зарегистрирован',
       },
+      cart:{
+        empty:"Корзина пуста",
+        clear:"Очистить корзину"
+      },
       forms: {
         ProfileForm: {
           Name: {
             title: 'Псевдоним',
-            placeholder: 'Придумайте себе псевдоним',
+            placeholder: 'Придумайте псевдоним',
           },
           About: {
             title: 'О себе',
@@ -54,7 +58,7 @@ export const resources = {
           Button: {
             title: 'Сохранить',
           },
-          Title: 'Изменить профиль',
+          Title: 'Профиль',
         },
         ChangePasswordForm: {
           Button: {
@@ -75,7 +79,7 @@ export const resources = {
           Title: 'Изменить пароль',
         },
         LoginForm: {
-          Title: 'Войти',
+          Title: 'Авторизация',
           Email: {
             title: 'Email',
             placeholder: 'Укажите email',
@@ -87,6 +91,7 @@ export const resources = {
           Button: {
             title: 'Войти',
           },
+          Message:'Успешная авторизация',
         },
         RegisterForm: {
           Title: 'Регистрация',
@@ -101,6 +106,7 @@ export const resources = {
           Button: {
             title: 'Регистрация',
           },
+          Message:'Успешная регистрация',
         },
         ProductForm: {
           Title: '',
@@ -129,9 +135,9 @@ export const resources = {
             placeholder: 'Категория',
           },
           Button: {
-            title: 'Добавить',
+            title: 'Сохранить',
           },
-          SuccessMessage:'Новый продукт добавлен'
+          SuccessMessage: 'Новый продукт добавлен',
         },
         AddCategoryForm: {
           Title: 'Новая категория',
@@ -152,7 +158,7 @@ export const resources = {
         title: 'Account',
         sign_in: 'Sign In',
         sign_up: 'Sign Up',
-        logout: 'Logout',
+        logout: 'Logout',        
       },
       logo: {
         title: 'Vsyakiy hlam',
@@ -188,6 +194,10 @@ export const resources = {
       info: {
         registered: 'Registered',
       },
+      cart:{
+        empty:"Cart is empty",
+        clear:"Clear cart"
+      },
       forms: {
         ProfileForm: {
           Name: {
@@ -201,7 +211,7 @@ export const resources = {
           Button: {
             title: 'Save',
           },
-          Title: 'Change profile',
+          Title: 'Profile',
         },
         ChangePasswordForm: {
           Button: {
@@ -234,6 +244,7 @@ export const resources = {
           Button: {
             title: 'Sign in',
           },
+          Message:'Success',
         },
         RegisterForm: {
           Title: 'Sign up',
@@ -248,6 +259,7 @@ export const resources = {
           Button: {
             title: 'Sign up',
           },
+          Message:'Success',
         },
         ProductForm: {
           Title: '',
@@ -276,9 +288,9 @@ export const resources = {
             placeholder: 'Category',
           },
           Button: {
-            title: 'Add',
+            title: 'Save',
           },
-          SuccessMessage:'Add product success'
+          SuccessMessage: 'Add product success',
         },
         AddCategoryForm: {
           Title: 'New category',

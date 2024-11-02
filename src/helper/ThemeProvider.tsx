@@ -1,6 +1,6 @@
 import React, { ReactNode, FC, createContext, useEffect, ReactElement } from 'react';
 import { Theme } from './types';
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { useLocalStorage } from '../shared/hooks/useLocalStorage';
 
 export const ThemeContext = createContext([]);
 

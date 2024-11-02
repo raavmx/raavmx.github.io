@@ -1,34 +1,29 @@
-import React, { FC, ReactElement, useState, useEffect, useRef } from 'react';
+import React, { memo } from 'react';
 import { ShortProductCard } from '../ShortProductCard';
-import { GET_PRODUCTS, ProductsData } from 'src/helper/connections/productConnections';
-import { commandId } from 'src/app/constants/Api';
-import { useQuery } from '@apollo/client';
+import './ProductList.scss';
+import { Product } from 'src/types/ProductTypes';
+import { Loader } from 'src/components/Loader/Loader';
 
-export const ProductList: FC = (): ReactElement => {
-  const { loading, data } = useQuery<ProductsData>(GET_PRODUCTS);
-  const products = data?.products?.getMany?.data.filter((x) => x.commandId == commandId);
-  const ref = useRef(null);
+interface ProductsListProps {
+  products: Product[] | null;
+  isLoading?: boolean;
+  className?: string;
+}
 
+export const ProductList = memo(({ products, isLoading = false, className }: ProductsListProps) => {
+  console.log('list', products)
   return (
-    <section className="container-fluid p-5">
-      <div className="row">
-        {!loading &&
-          products?.map(({ id, name, photo, desc, oldPrice, price, createdAt, category }) => {
-            return (
-              <ShortProductCard
-                key={id}
-                name={name}
-                photo={photo}
-                desc={desc}
-                oldPrice={oldPrice}
-                price={price}
-                id={id}
-                category={category}
-                createdAt={createdAt}
-              />
-            );
-          })}
-      </div>
-    </section>
+    <div className="product-list p-5">
+      {!products && isLoading && <Loader />}
+
+      {!products?.length && !isLoading && <Loader />}
+
+      {products?.map((product, i) => (
+        <ShortProductCard key={i} product={product} />
+      ))}
+      {products && isLoading && <Loader />}
+    </div>
   );
-};
+});
+
+ProductList.displayName = 'ProductList';

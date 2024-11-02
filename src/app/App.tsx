@@ -7,62 +7,50 @@ import { LocalizationInitiator } from 'src/localization/LocalizationInitiator';
 import { Home } from '../pages/Home';
 import { Cart } from '../pages/Cart';
 import { Account } from '../pages/Account';
-import { AddProduct } from '../pages/AddProduct';
-import { Auth } from 'src/pages/Auth';
-import { useDispatch, useSelector } from 'react-redux';
-import { programActions } from './redux/program';
+import { Login } from 'src/pages/Login';
 import { ProtectedRoute } from '../helper/ProtectedRoute';
 import { Register } from 'src/pages/Register';
-import { ApolloProvider } from '@apollo/client';
-import client from 'src/helper/connections/client';
-import {Category} from '../pages/Category'
+import { Category } from '../pages/Category';
+import { ROUTER_PATH } from './constants/router';
+import { ProductDetail } from 'src/pages/ProductDetail';
 
 function App(): ReactElement {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(programActions.initialise());
-  }, [dispatch]);
   return (
-    <>
-      <ApolloProvider client={client}>
+    <>    
         <BrowserRouter>
           <LocalizationInitiator />
           <Layout>
             <Header />
             <Routes>
               <Route
-                path="account"
+                path={ROUTER_PATH.ACCOUNT}
                 element={
                   <ProtectedRoute>
                     <Account />
                   </ProtectedRoute>
                 }
               />
-              <Route path="cart" element={<Cart />} />
-              <Route path="" element={<Home />} />
+              <Route path={ROUTER_PATH.CART} element={<Cart />} />
+              <Route path={ROUTER_PATH.HOME} element={<Home />} />
               <Route
-                path="productAdd"
-                element={
-                  <ProtectedRoute>
-                    <AddProduct />
-                  </ProtectedRoute>
-                }
-              />
-                            <Route
-                path="category"
+                path={ROUTER_PATH.CATEGORY}
                 element={
                   <ProtectedRoute>
                     <Category />
                   </ProtectedRoute>
                 }
               />
-              <Route path="auth" element={<Auth />} />
-              <Route path="register" element={<Register />} />
+              <Route
+                path={ROUTER_PATH.PRODUCT(':id')}
+                element={                 
+                    <ProductDetail />                
+                }
+              />
+              <Route path={ROUTER_PATH.LOGIN} element={<Login />} />
+              <Route path={ROUTER_PATH.REGISTER} element={<Register />} />
             </Routes>
           </Layout>
-        </BrowserRouter>
-      </ApolloProvider>
+        </BrowserRouter>      
     </>
   );
 }

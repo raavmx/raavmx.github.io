@@ -1,19 +1,11 @@
 import { useFormik } from 'formik';
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
 import { Button } from 'src/components/Buttons/Button/Button';
 import { TextFormField } from '../../../FormField/TextFormField';
-import { getServerErrorCode, isNotDefinedString, isValidFileType } from '../../../../utils/validation';
+import { isNotDefinedString } from '../../../../utils/validation';
 import { CategoryFormValues, CategoryFormErrors } from '../types/CategoryFormTypes';
-import { useMutation } from '@apollo/client';
-import {
-  ADD_CATEGORY,
-  CategoryAddData,
-  CategoryAddInput,
-  GET_CATEGORIES,
-} from 'src/helper/connections/categoriesConnections';
-import { categoryActions } from 'src/app/redux/category';
+import { useCreateCategoryMutation } from 'src/shared/api/rtk/categoriesApi';
 import { message } from 'antd';
 
 export type TypeForm = {
@@ -22,19 +14,9 @@ export type TypeForm = {
 
 export const CategoryAddForm: FC<TypeForm> = ({ closeModal }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 
-  const [add] = useMutation<CategoryAddData, CategoryAddInput>(ADD_CATEGORY, {
-    onCompleted: (data) => {
-      message.info(t(`Forms.CategoryForm.SuccessMessage`));
-      console.log(data);
-      dispatch(categoryActions.add(data.categories.add));
-    },
-    onError: (error) => {
-      message.error(t(`Errors.${getServerErrorCode(error)}`));
-    },
-    refetchQueries: [GET_CATEGORIES],
-  });
+  const [createCategory, { isLoading: createCategoryLoading, error: createCategoryError }] =
+    useCreateCategoryMutation();
 
   const validate = (values: CategoryFormValues) => {
     const errors = {} as CategoryFormErrors;
@@ -46,10 +28,12 @@ export const CategoryAddForm: FC<TypeForm> = ({ closeModal }) => {
 
   const formManager = useFormik<CategoryFormValues>({
     initialValues: {
-      name: undefined,
+      name: '',
     },
     onSubmit: (values, actions) => {
-      add({ variables: { input: { name: values.name } } });
+      createCategory(values).then((data)=>{
+        
+      });
       actions.resetForm();
       if (closeModal) closeModal();
     },

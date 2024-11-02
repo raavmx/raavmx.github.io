@@ -6,11 +6,10 @@ import { TextFormField } from '../../../FormField/TextFormField';
 import { PasswordFormField } from '../../../FormField/PasswordFormField';
 import { RegisterFormValues, RegisterFormErrors } from 'src/types/RegisterFormTypes';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, AppState } from 'src/app/redux/store';
+import { AppDispatch, AppState } from 'src/app/store/store';
 import { message } from 'antd';
-import { userActions, signUp } from '../../../../app/redux/user';
+import { userActions, signUp } from 'src/features/Auth/service/user';
 import { isNotDefinedString, isNotValidEmail } from 'src/utils/validation';
-import { commandId } from 'src/app/constants/Api';
 import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm = memo(() => {
@@ -21,12 +20,14 @@ export const RegisterForm = memo(() => {
   const formManager = useFormik<RegisterFormValues>({
     initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
-      dispatch(signUp({ email: values.email, password: values.password, commandId: commandId }))
+      dispatch(signUp({ email: values.email, password: values.password }))
         .then((data) => {
-          console.log('register', data);
           if (data.type.includes('fulfilled')) {
-            message.success(t(`Messages.SignupSuccess`));
-            navigate('/auth');
+            message.success(t(`form.RegisterForm.Messages`));
+            navigate('/login' ,{replace:true});
+          }
+          else{
+            message.error('Register failed');
           }
         })
         .catch((error) => {
@@ -62,7 +63,7 @@ export const RegisterForm = memo(() => {
 
   return (
     <>
-      <h4 className="p-4">{t('forms.RegisterForm.Title')}</h4>
+      <h4 className="py-4">{t('forms.RegisterForm.Title')}</h4>
       <form>
         <TextFormField
           onBlur={handleBlur}

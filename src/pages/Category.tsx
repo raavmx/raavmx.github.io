@@ -1,16 +1,17 @@
 import React, { FC, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { CategoryAddForm } from 'src/components/Forms/CategoryForm/ui/CategoryAddForm';
-import { CategoryList } from 'src/components/Operation/Category/ui/CategoryList';
+import { CategoryList } from 'src/components/Category/ui/CategoryList';
 import { Button } from 'src/components/Buttons/Button/Button';
 import { Portal } from 'src/components/Portal';
 import { ModalWindow } from 'src/components/ModalWindow';
-import { AppState } from 'src/app/redux/store';
 import { MdAdd } from 'react-icons/md';
+import { Divider } from 'antd';
+import { useSelector } from 'react-redux';
+import { getIsAuth } from 'src/features/Auth/service/user';
 
 export const Category: FC = () => {
   const [showAddCategory, setAddCategoryModal] = useState(false);
-  const token = useSelector<AppState, AppState['token']>((state) => state.token);
+  const isAuth = useSelector(getIsAuth);
   const openCategoryModal = (): void => {
     setAddCategoryModal(true);
   };
@@ -21,12 +22,13 @@ export const Category: FC = () => {
   return (
     <div className="app-content" style={{ padding: '10px' }}>
       <CategoryList />
+      <Divider />
       <Button type="submit" variant={'primary'} size="small" onClick={openCategoryModal}>
         <MdAdd />
       </Button>
       {showAddCategory && (
         <Portal>
-          <ModalWindow visible={showAddCategory} onCloseModalWindow={closeCategoryModal} token={token}>
+          <ModalWindow visible={showAddCategory} onCloseModalWindow={closeCategoryModal} isAuth={isAuth}>
             <CategoryAddForm closeModal={closeCategoryModal}></CategoryAddForm>
           </ModalWindow>
         </Portal>

@@ -1,37 +1,48 @@
 import React, { FC, useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CartProduct } from '../components/Product/CartProduct/CartProduct';
-import { Product } from '../components/Product/types';
-import { useSelector } from 'react-redux';
-import { AppState } from '../app/redux/store';
-import { useQuery } from '@apollo/client';
-import { GET_PRODUCT_BY_IDS, ProductsData } from 'src/helper/connections/productConnections';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppState } from 'src/app/store/store';
+import { Button } from 'src/components/Buttons/Button/Button';
+import { cartActions } from 'src/app/store/cart';
 
 export const Cart: FC = () => {
+  const { t } = useTranslation();
   const { products } = useSelector<AppState, AppState['cart']>((state): AppState['cart'] => state.cart);
-  const { data } = useQuery<ProductsData>(GET_PRODUCT_BY_IDS, { variables: { ids: products.map((p) => p.productId) } });
-  const cart = data?.products?.getMany?.data;
-  console.log('cart', products);
-  if (!cart || cart.length == 0) {
+  const dispatch = useDispatch();
+  const onDeleteAll = () => {
+    dispatch(cartActions.clean());
+  };
+
+  if (products == null || products?.length <= 0) {
     return (
       <div className="app-content">
-        <h4>Корзина пуста</h4>
+        <h4>{t(`cart.empty`)}</h4>
       </div>
     );
   }
+
   return (
     <div className="app-content">
       <div className="cart">
-        {cart.map((product: Product) => {
-          return (
-            <CartProduct
-              key={product.id}
-              id={product.id}
-              title={product.name}
-              image={product.photo}
-              cost={product.price}
-            />
-          );
+        {products?.map((cart) => {
+          if (cart.product?.id)
+            return (
+              <CartProduct
+                key={cart?.product?.id}
+                id={cart?.product?.id}
+                title={cart?.product?.name}
+                image={cart?.product?.photo}
+                cost={cart?.product?.price}
+                count={cart?.count}
+              />
+            );
         })}
+        <div className="w-100 text-center">
+          <Button size="small" variant="clean" title="Очистить" onClick={onDeleteAll}>
+            <i className="fas fa-trash"><span className='mx-2'>{t(`cart.clear`)}</span></i>
+          </Button>
+        </div>
       </div>
     </div>
   );
