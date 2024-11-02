@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { ProductList } from '../components/Product/ProductList';
-export const Home: FC = () => {
+import { ProductsInfinityList } from 'src/widgets/ProductsInfinityList';
 
+export const Home: FC = () => {
   return (
     <div className="app-content">
-      <ProductList  />
+      <ProductsInfinityList />
     </div>
   );
 };

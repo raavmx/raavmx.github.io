@@ -1,27 +1,38 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginProps } from '../../Login/types/LoginTypes';
-import { AppState } from '../../../app/redux/store';
 import { Link } from 'react-router-dom';
 import { CiLogin, CiLogout } from 'react-icons/ci';
-import { tokenActions } from '../../../app/redux/token';
+import { userActions } from 'src/features/Auth/service/user';
 import { useTranslation } from 'react-i18next';
+import { getIsAuth, getProfile } from 'src/features/Auth/service/user';
+import { useNavigate } from 'react-router-dom';
+import { ROUTER_PATH } from 'src/app/constants/router';
+import { AppState } from 'src/app/store/store';
 
 export const Login: FC<LoginProps> = ({ width, height }) => {
-  const token = useSelector<AppState, AppState['token']>((state): AppState['token'] => state.token);
-  const dispatch = useDispatch();
+  const user = useSelector<AppState, AppState['user']>((state): AppState['user'] => state.user);
   const { t } = useTranslation();
+  const isAuth = useSelector(getIsAuth);
+  const  profile  = useSelector(getProfile);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onLogout = () => {
-    dispatch(tokenActions.clear());
+    dispatch(userActions.clear());
+    navigate(ROUTER_PATH.LOGIN);
   };
 
   return (
     <>
-      {token ? (
-        <CiLogout style={{ width, height, }} title={t('account.logout')} onClick={onLogout} />
+      {isAuth ? (
+        <div className="d-flex align-items-center">
+          <span>{profile.email}</span>
+          <CiLogout style={{ width, height }} title={t('account.logout')} onClick={onLogout} />
+        </div>
       ) : (
-        <Link to="auth">
-          <CiLogin style={{ width, height }} title={t('account.sign_in')}/>
+        <Link to="login">
+          <CiLogin style={{ width, height }} title={t('account.sign_in')} />
         </Link>
       )}
     </>

@@ -7,8 +7,8 @@ export const ProfileCompleteForm: FC = () => {
   return (
     <>
       <ProfileForm />
-      <Divider />
-      <ChangePasswordForm />
+      {/* <Divider />
+      <ChangePasswordForm /> */}
     </>
   );
 };

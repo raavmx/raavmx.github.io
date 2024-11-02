@@ -38,6 +38,7 @@ export type SelectFieldProps = Pick<FormProps, 'disabled' | 'autoFocusElement'> 
   touched: boolean;
   errors: string;
   value: valueType;
+  name:string;
   onChange: FormikHandlers['handleChange'];
   onBlur: FormikHandlers['handleBlur'];
   placeholder: string;

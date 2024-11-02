@@ -8,33 +8,15 @@ import { PasswordFormField } from '../../../FormField/PasswordFormField';
 import { LoginFormErrors, LoginFormValues } from '../types/LoginFormTypes';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { tokenActions } from '../../../../app/redux/token';
-import { useMutation } from '@apollo/client';
 import { message } from 'antd';
-import { SIGN_IN, SigninData } from 'src/helper/connections/profileConnections';
-import { userActions } from 'src/app/redux/user';
-export interface LoginFormProps extends LoginFormValues {
-  title: string;
-}
+import { signIn } from 'src/features/Auth/service/user';
+import { AppDispatch } from 'src/app/store/store';
+import { tokenActions } from 'src/app/store/token';
 
-export const LoginForm = memo(({ title }: LoginFormProps) => {
+export const LoginForm = memo(() => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const [signin] = useMutation<SigninData, LoginFormValues>(SIGN_IN, {
-    onCompleted: (data) => {
-      const token = data.profile.signin.token;
-      if (data && token) {
-        dispatch(tokenActions.generate(token));
-        dispatch(userActions.setInfo(data.profile.signin));
-        navigate('/');
-      }
-    },
-    onError: (error) => {
-      message.error(t(`Errors.${getServerErrorCode(error)}`));
-    },
-  });
+  const dispatch = useDispatch<AppDispatch>();
 
   const validate = (values: LoginFormValues) => {
     const errors = {} as LoginFormErrors;
@@ -56,7 +38,22 @@ export const LoginForm = memo(({ title }: LoginFormProps) => {
   const formManager = useFormik<LoginFormValues>({
     initialValues: { email: '', password: '' },
     onSubmit: (values, actions) => {
-      signin({ variables: { email: values.email, password: values.password } });
+      dispatch(signIn({ email: values.email, password: values.password }))
+        .then((data) => {
+          if (data.type.includes('fulfilled')) {
+            message.success(t(`forms.LoginForm.Message`));
+            tokenActions.set(data);
+            actions.resetForm();
+            navigate(-1);
+          }
+          else{
+            message.error('Login error');
+          }
+        })
+        .catch((error) => {
+          message.error(error.message, 10);
+        });
+      
     },
     validate: validate,
   });
@@ -65,7 +62,7 @@ export const LoginForm = memo(({ title }: LoginFormProps) => {
 
   return (
     <form>
-      <h5>{title}</h5>
+      <h4 className="py-4">{t(`forms.LoginForm.Title`)}</h4>
       <TextFormField
         onBlur={handleBlur}
         onChange={handleChange}

@@ -6,6 +6,7 @@ export type TypeModalPortal = {
   visible: boolean;
   children?: React.ReactNode;
   onCloseModalWindow?: (visible: boolean) => void;
+  
 };
 
 export const ModalWindowPortal: FC<TypeModalPortal> = ({

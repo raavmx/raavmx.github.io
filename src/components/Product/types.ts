@@ -23,7 +23,7 @@ export type Product = {
   createdAt: string;
   oldPrice?: number;
   price: number;
-  category: Category;
+  category?: Category;
 };
 
 //создание случайного продукта
