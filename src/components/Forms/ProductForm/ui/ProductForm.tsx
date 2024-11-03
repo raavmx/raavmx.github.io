@@ -57,8 +57,7 @@ export const ProductForm: FC<TypeForm> = ({ closeModal, id, product }) => {
       category: product?.category ?? null,
     },
     onSubmit: (values, actions) => {
-      editProduct({ values, id }).then((data) => {
-      });
+      editProduct({ values, id }).then((data) => {});
       actions.resetForm();
       if (closeModal) closeModal();
     },
