@@ -1,5 +1,5 @@
 import { Category } from 'src/entities/Category/Model/Category';
-import { SERVER_URL } from '../../app/constants/api';
+import { SERVER_URL } from '../../app/constants/api_';
 import { getToken } from './getToken';
 
 export const fetch_Categories = async (pageSize?: number, pageNumber?: number) => {

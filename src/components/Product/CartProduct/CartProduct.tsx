@@ -7,7 +7,7 @@ import { Button } from 'src/components/Buttons/Button/Button';
 import { AppState } from 'src/app/store/store';
 import { cartActions } from 'src/app/store/cart';
 
-const CartProduct: FC<CartProductModel> = ({ id, image, title, cost, count }) => {
+export const CartProduct: FC<CartProductModel> = ({ id, image, title, cost, count }) => {
   const dispatch = useDispatch();
   const cart = useSelector<AppState, AppState['cart']>((state): AppState['cart'] => state.cart);
   const product = cart.products.find((p) => p?.product?.id == id);
@@ -38,4 +38,3 @@ const CartProduct: FC<CartProductModel> = ({ id, image, title, cost, count }) =>
   );
 };
 
-export { CartProduct, type CartProductModel };

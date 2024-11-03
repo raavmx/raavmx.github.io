@@ -42,7 +42,6 @@ export const LoginForm = memo(() => {
         .then((data) => {
           if (data.type.includes('fulfilled')) {
             message.success(t(`forms.LoginForm.Message`));
-            tokenActions.set(data);
             actions.resetForm();
             navigate(-1);
           } else {

@@ -1,4 +1,4 @@
-import { SERVER_URL, COMMAND_ID } from '../../app/constants/api';
+import { SERVER_URL, COMMAND_ID } from '../../app/constants/api_';
 import { getToken } from './getToken';
 
 export type Credential = {
