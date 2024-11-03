@@ -45,3 +45,9 @@ export interface ProductsRequest extends Omit<ProductsFilters, 'pagination' | 's
   sorting?: string;
   ids?: string;
 }
+
+export type DdlItem = {
+  value: string;
+  label: string;
+};
+export type ProductFormErrors = Record<keyof Product, string>;

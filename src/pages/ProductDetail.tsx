@@ -28,3 +28,5 @@ export const ProductDetail = memo(() => {
     </div>
   );
 });
+
+ProductDetail.displayName = 'ProductDetail';

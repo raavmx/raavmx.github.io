@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { CategoryAddForm } from 'src/components/Forms/CategoryForm/ui/CategoryAddForm';
-import { CategoryList } from 'src/components/Category/ui/CategoryList';
+import { CategoryList } from 'src/components/Category/CategoryList';
 import { Button } from 'src/components/Buttons/Button/Button';
 import { Portal } from 'src/components/Portal';
 import { ModalWindow } from 'src/components/ModalWindow';

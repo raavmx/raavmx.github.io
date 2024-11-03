@@ -37,4 +37,3 @@ export const CartProduct: FC<CartProductModel> = ({ id, image, title, cost, coun
     </>
   );
 };
-

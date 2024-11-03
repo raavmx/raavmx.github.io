@@ -6,7 +6,6 @@ import { TextFormField } from '../../../FormField/TextFormField';
 import { isNotDefinedString } from '../../../../utils/validation';
 import { CategoryFormValues, CategoryFormErrors } from '../types/CategoryFormTypes';
 import { useCreateCategoryMutation } from 'src/shared/api/rtk/categoriesApi';
-import { message } from 'antd';
 
 export type TypeForm = {
   closeModal?: () => void;
@@ -31,7 +30,7 @@ export const CategoryAddForm: FC<TypeForm> = ({ closeModal }) => {
       name: '',
     },
     onSubmit: (values, actions) => {
-      createCategory(values).then((data) => {});
+      createCategory(values);
       actions.resetForm();
       if (closeModal) closeModal();
     },
