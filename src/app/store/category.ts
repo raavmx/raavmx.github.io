@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { Category } from '../../entities/Category/Model/Category';
 import { fetch_Categories } from 'src/shared/api/categories';
 

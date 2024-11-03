@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CategoryItem } from '../CategoryItem';
+import { CategoryItem } from './CategoryItem';
 import { useFetchCategoriesQuery } from 'src/shared/api/rtk/categoriesApi';
 import { Loader } from 'src/components/Loader/Loader';
 import './Category.scss';

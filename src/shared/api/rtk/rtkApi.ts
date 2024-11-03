@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { SERVER_URL } from '../../../app/constants/api_';
+import { SERVER_URL } from '../../../app/constants/api';
 import { getToken } from '../getToken';
 
 export const rtkApi = createApi({

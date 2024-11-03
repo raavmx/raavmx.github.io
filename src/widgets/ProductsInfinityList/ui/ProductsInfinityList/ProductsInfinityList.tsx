@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useRef } from 'react';
-import { selectError, selectFilter, selectHasMore, selectProducts, setCurrentPage } from 'src/app/store/product';
+import { selectError, selectFilter, selectHasMore, setCurrentPage } from 'src/app/store/product';
 import { ProductList } from 'src/components/Product/ProductList';
 import { useFetchProductsQuery } from 'src/shared/api/rtk/productApi';
 import { useAppDispatch, useAppSelector } from 'src/shared/hooks/redux';

@@ -5,12 +5,12 @@ import { Button } from '../../../Buttons/Button/Button';
 import { NumberFormField } from '../../../FormField/NumberFormField';
 import { TextFormField } from '../../../FormField/TextFormField';
 import { isNotDefinedString } from '../../../../utils/validation';
-import { ProductFormErrors, DdlItem } from '../types/ProductFormTypes';
+//import { ProductFormErrors } from '../types/ProductFormTypes';
 import { TextAreaFormField } from '../../../FormField/TextAreaFormField';
 import { SelectFormField } from '../../../FormField/SelectFormField';
 import { useFetchCategoriesQuery } from 'src/shared/api/rtk/categoriesApi';
 import { useCreateUpdateProductMutation } from 'src/shared/api/rtk/productApi';
-import { Product, ProductParams } from 'src/types/ProductTypes';
+import { Product, ProductParams, DdlItem, ProductFormErrors } from 'src/types/ProductTypes';
 import { FileUploader } from 'src/components/FileUploader/FileUploader';
 
 export type TypeForm = {
@@ -40,7 +40,7 @@ export const ProductForm: FC<TypeForm> = ({ closeModal, id, product }) => {
     }
 
     if (values.photo == undefined) {
-      errors.photoErrors = t(`errors.is_required`);
+      errors.photo = t(`errors.is_required`);
     }
 
     return errors;

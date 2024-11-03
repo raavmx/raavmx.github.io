@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { Credential, sign_up, sign_in } from 'src/shared/api/user';
 import { LOCAL_STORAGE_TOKEN_KEY, LOCAL_STORAGE_USER_KEY } from '../../../app/constants/localStorage';
 import { resetCatalog } from 'src/app/store/product';

@@ -8,10 +8,10 @@ import { Button } from 'src/components/Buttons/Button/Button';
 import { Portal } from 'src/components/Portal';
 import { ModalWindow } from 'src/components/ModalWindow';
 import { ProductForm } from 'src/components/Forms/ProductForm/ui/ProductForm';
-import { MdEdit, MdDelete } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
 
 export const FullProductCard: FC<Product> = (product): ReactElement => {
-  const { id, name, photo, desc, oldPrice, price, categoryId, category } = product;
+  const { id, name, photo, desc, oldPrice, price } = product;
   const isAuth = useSelector(getIsAuth);
   const [showAddProduct, setAddProductModal] = useState(false);
   const openProductModal = (): void => {
@@ -37,9 +37,6 @@ export const FullProductCard: FC<Product> = (product): ReactElement => {
                   <div className="oper-btn">
                     <Button type="button" variant="clean" size="small" onClick={openProductModal}>
                       <MdEdit />
-                    </Button>
-                    <Button type="button" variant="clean" size="small">
-                      <MdDelete />
                     </Button>
                   </div>
                 )}
