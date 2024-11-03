@@ -8,7 +8,6 @@ export const productApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     fetchProducts: build.query<FilterResponse<Product>, ProductsFilters>({
       query: (values) => {
-        console.log('query', values);
         return {
           url: '/products',
           params: stringifyNestedObjects(values),

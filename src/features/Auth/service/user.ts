@@ -62,9 +62,7 @@ interface User {
 }
 
 const getInitialState = (): UserStateType => {
-  //localStorage.clear();
   const user = localStorage.getItem(LOCAL_STORAGE_USER_KEY);
-  console.log('getInitialState', user);
   if (user) {
     return JSON.parse(user) as UserStateType;
   }
@@ -104,7 +102,6 @@ const userSlice = createSlice({
       state.user = null;
       localStorage.removeItem(LOCAL_STORAGE_TOKEN_KEY);
       localStorage.removeItem(LOCAL_STORAGE_USER_KEY);
-      console.log('logout', localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY));
     },
   },
   extraReducers: (builder) => {
