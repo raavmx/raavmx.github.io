@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { SERVER_URL } from 'src/app/constants/api';
+import { SERVER_URL } from '../../../app/constants/api';
 import { getToken } from '../getToken';
 
 export const rtkApi = createApi({
@@ -9,8 +9,7 @@ export const rtkApi = createApi({
     prepareHeaders: (headers) => {
       const token = getToken();
       console.log('rktApi', token);
-      if (token)
-        headers.set('Authorization', token);
+      if (token) headers.set('Authorization', token);
       return headers;
     },
   }),

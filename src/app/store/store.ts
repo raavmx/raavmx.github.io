@@ -3,7 +3,7 @@ import { rtkApi } from 'src/shared/api/rtk/rtkApi';
 import { appReducer } from './app';
 import { token } from './token';
 import { productReducer } from './product';
-import {user} from '../../features/Auth/service/user'
+import { user } from '../../features/Auth/service/user';
 import { cart } from './cart';
 
 export const store = configureStore({

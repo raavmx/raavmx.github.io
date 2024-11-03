@@ -31,9 +31,7 @@ export const CategoryAddForm: FC<TypeForm> = ({ closeModal }) => {
       name: '',
     },
     onSubmit: (values, actions) => {
-      createCategory(values).then((data)=>{
-        
-      });
+      createCategory(values).then((data) => {});
       actions.resetForm();
       if (closeModal) closeModal();
     },

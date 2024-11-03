@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Layout } from '../components/Layout/Layout';
@@ -16,41 +16,36 @@ import { ProductDetail } from 'src/pages/ProductDetail';
 
 function App(): ReactElement {
   return (
-    <>    
-        <BrowserRouter>
-          <LocalizationInitiator />
-          <Layout>
-            <Header />
-            <Routes>
-              <Route
-                path={ROUTER_PATH.ACCOUNT}
-                element={
-                  <ProtectedRoute>
-                    <Account />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path={ROUTER_PATH.CART} element={<Cart />} />
-              <Route path={ROUTER_PATH.HOME} element={<Home />} />
-              <Route
-                path={ROUTER_PATH.CATEGORY}
-                element={
-                  <ProtectedRoute>
-                    <Category />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path={ROUTER_PATH.PRODUCT(':id')}
-                element={                 
-                    <ProductDetail />                
-                }
-              />
-              <Route path={ROUTER_PATH.LOGIN} element={<Login />} />
-              <Route path={ROUTER_PATH.REGISTER} element={<Register />} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>      
+    <>
+      <BrowserRouter>
+        <LocalizationInitiator />
+        <Layout>
+          <Header />
+          <Routes>
+            <Route
+              path={ROUTER_PATH.ACCOUNT}
+              element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              }
+            />
+            <Route path={ROUTER_PATH.CART} element={<Cart />} />
+            <Route path={ROUTER_PATH.HOME} element={<Home />} />
+            <Route
+              path={ROUTER_PATH.CATEGORY}
+              element={
+                <ProtectedRoute>
+                  <Category />
+                </ProtectedRoute>
+              }
+            />
+            <Route path={ROUTER_PATH.PRODUCT(':id')} element={<ProductDetail />} />
+            <Route path={ROUTER_PATH.LOGIN} element={<Login />} />
+            <Route path={ROUTER_PATH.REGISTER} element={<Register />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </>
   );
 }

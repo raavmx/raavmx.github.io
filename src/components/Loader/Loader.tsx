@@ -6,6 +6,4 @@ interface LoaderProps {
   className?: string;
 }
 
-export const Loader = ({ className = '' }: LoaderProps) => (
-  <span className={cn(s.preloader, className)} />
-);
+export const Loader = ({ className = '' }: LoaderProps) => <span className={cn(s.preloader, className)} />;

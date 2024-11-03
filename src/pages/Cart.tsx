@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useMemo } from 'react';
+import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CartProduct } from '../components/Product/CartProduct/CartProduct';
 import { useSelector, useDispatch } from 'react-redux';
@@ -40,7 +40,9 @@ export const Cart: FC = () => {
         })}
         <div className="w-100 text-center">
           <Button size="small" variant="clean" title="Очистить" onClick={onDeleteAll}>
-            <i className="fas fa-trash"><span className='mx-2'>{t(`cart.clear`)}</span></i>
+            <i className="fas fa-trash">
+              <span className="mx-2">{t(`cart.clear`)}</span>
+            </i>
           </Button>
         </div>
       </div>

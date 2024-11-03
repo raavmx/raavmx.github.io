@@ -47,10 +47,7 @@ const productSlice = createSlice({
             },
           }: PayloadAction<FilterResponse<Product>>
         ) => {
-          state.products = [
-            ...(state.products && state.currentPage > 1 ? state.products : []),
-            ...data,
-          ];
+          state.products = [...(state.products && state.currentPage > 1 ? state.products : []), ...data];
           state.isLoading = false;
           state.error = '';
           state.hasMore = total > pageNumber * pageSize;

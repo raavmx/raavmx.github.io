@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import cn from 'classnames';
 import './ModalWindow.scss';
-import { Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'src/app/constants/router';
 
 export type TypeModal = {
@@ -12,8 +12,8 @@ export type TypeModal = {
 };
 
 export const ModalWindow: FC<TypeModal> = ({ visible = false, onCloseModalWindow, children, isAuth }): ReactElement => {
-  if(!isAuth){
-    return <Navigate to={ROUTER_PATH.LOGIN}/>
+  if (!isAuth) {
+    return <Navigate to={ROUTER_PATH.LOGIN} />;
   }
   return (
     <div className={cn('modal', { open: visible })}>

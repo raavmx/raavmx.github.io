@@ -41,7 +41,7 @@ const categorySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCategories.pending, (state, action) => {
+    builder.addCase(fetchCategories.pending, (state) => {
       state.status = 'loading';
     });
     builder.addCase(fetchCategories.fulfilled, (state, action) => {

@@ -24,9 +24,8 @@ export const RegisterForm = memo(() => {
         .then((data) => {
           if (data.type.includes('fulfilled')) {
             message.success(t(`form.RegisterForm.Messages`));
-            navigate('/login' ,{replace:true});
-          }
-          else{
+            navigate('/login', { replace: true });
+          } else {
             message.error('Register failed');
           }
         })

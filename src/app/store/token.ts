@@ -7,14 +7,16 @@ const tokenSlice = createSlice({
   initialState: localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY),
   reducers: {
     generate: (_, action) => action.payload,
-    set:(state, action)=> { state},
+    set: (state) => {
+      state;
+    },
     clear: () => null,
   },
 });
 export const tokenActions = tokenSlice.actions;
 
 export const tokenSelectors = {
-  get: (state: AppState): AppState['token'] =>  state.token ,
+  get: (state: AppState): AppState['token'] => state.token,
 };
 
 export const token = tokenSlice.reducer;

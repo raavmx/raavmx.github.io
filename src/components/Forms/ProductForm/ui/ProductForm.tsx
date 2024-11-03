@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '../../../Buttons/Button/Button';
 import { NumberFormField } from '../../../FormField/NumberFormField';
 import { TextFormField } from '../../../FormField/TextFormField';
-import { isNotDefinedString} from '../../../../utils/validation';
+import { isNotDefinedString } from '../../../../utils/validation';
 import { ProductFormErrors, DdlItem } from '../types/ProductFormTypes';
 import { TextAreaFormField } from '../../../FormField/TextAreaFormField';
 import { SelectFormField } from '../../../FormField/SelectFormField';
@@ -57,9 +57,9 @@ export const ProductForm: FC<TypeForm> = ({ closeModal, id, product }) => {
       category: product?.category ?? null,
     },
     onSubmit: (values, actions) => {
-     // console.log('poduct add', values);
+      // console.log('poduct add', values);
       editProduct({ values, id }).then((data) => {
-     //   console.log('poduct add then', data);
+        //   console.log('poduct add then', data);
       });
       actions.resetForm();
       if (closeModal) closeModal();

@@ -13,13 +13,17 @@ export const CategoryItem: FC<Category> = ({ id, name }) => {
 
   const save = () => {
     console.log('category item', id, name);
-    editCategory({values: { name: ref.current.value }, id} );
+    editCategory({ values: { name: ref.current.value }, id });
     handleClick();
   };
 
   return (
     <li>
-      {isEditing ? <input className='mx-2' ref={ref} type="text" defaultValue={name} /> : <label  className='mx-2'>{name}</label>}
+      {isEditing ? (
+        <input className="mx-2" ref={ref} type="text" defaultValue={name} />
+      ) : (
+        <label className="mx-2">{name}</label>
+      )}
       {isEditing ? <MdSave onClick={save} /> : <MdEdit onClick={handleClick} />}
     </li>
   );
