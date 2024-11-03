@@ -38,13 +38,15 @@ export const Cart: FC = () => {
               />
             );
         })}
-        <div className="w-100 text-center">
-          <Button size="small" variant="clean" title="Очистить" onClick={onDeleteAll}>
-            <i className="fas fa-trash">
-              <span className="mx-2">{t(`cart.clear`)}</span>
-            </i>
-          </Button>
-        </div>
+        {products?.length > 0 && (
+          <div className="w-100 text-center">
+            <Button size="small" variant="clean" title="Очистить" onClick={onDeleteAll}>
+              <i className="fas fa-trash">
+                <span className="mx-2">{t(`cart.clear`)}</span>
+              </i>
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
