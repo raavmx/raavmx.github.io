@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SERVER_URL } from 'src/app/constants/api';
+import { SERVER_URL } from 'src/app/constants/api_';
 import { getToken } from './getToken';
 
 export const $api = axios.create({
