@@ -12,7 +12,6 @@ export const CategoryItem: FC<Category> = ({ id, name }) => {
   };
 
   const save = () => {
-    console.log('category item', id, name);
     editCategory({ values: { name: ref.current.value }, id });
     handleClick();
   };

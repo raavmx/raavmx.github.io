@@ -10,7 +10,6 @@ export type NavigationState = {
 
 export const ProtectedRoute: FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAuth = useSelector(getIsAuth);
-  console.log('ProtectedRoute isAuth', isAuth);
   const location = useLocation();
   sessionStorage.setItem;
   if (isAuth) return <>{children}</>;

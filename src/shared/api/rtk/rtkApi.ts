@@ -8,7 +8,6 @@ export const rtkApi = createApi({
     baseUrl: SERVER_URL,
     prepareHeaders: (headers) => {
       const token = getToken();
-      console.log('rktApi', token);
       if (token) headers.set('Authorization', token);
       return headers;
     },
