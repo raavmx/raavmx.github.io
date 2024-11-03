@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { FullProductCard } from 'src/components/Product/FullProductCard';
 import { useFetchProductByIdQuery } from 'src/shared/api/rtk/productApi';
 
-
 export const ProductDetail = memo(() => {
   const { id } = useParams();
   const { data: product, isLoading, error } = useFetchProductByIdQuery(id || '', { skip: !id });
@@ -13,7 +12,6 @@ export const ProductDetail = memo(() => {
   if (!product) return <h4>error</h4>;
   return (
     <div className="app-content">
-  
       <FullProductCard
         name={product.name}
         photo={product.photo}

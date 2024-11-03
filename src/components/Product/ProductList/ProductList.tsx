@@ -11,7 +11,7 @@ interface ProductsListProps {
 }
 
 export const ProductList = memo(({ products, isLoading = false, className }: ProductsListProps) => {
-  console.log('list', products)
+  console.log('list', products);
   return (
     <div className="product-list p-5">
       {!products && isLoading && <Loader />}

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement } from 'react';
 import './ButtonBasket.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from 'src/app/store/store';

@@ -1,12 +1,10 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginProps } from '../../Login/types/LoginTypes';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CiLogin, CiLogout } from 'react-icons/ci';
-import { userActions } from 'src/features/Auth/service/user';
+import { userActions, getIsAuth, getProfile } from 'src/features/Auth/service/user';
 import { useTranslation } from 'react-i18next';
-import { getIsAuth, getProfile } from 'src/features/Auth/service/user';
-import { useNavigate } from 'react-router-dom';
 import { ROUTER_PATH } from 'src/app/constants/router';
 import { AppState } from 'src/app/store/store';
 
@@ -14,7 +12,7 @@ export const Login: FC<LoginProps> = ({ width, height }) => {
   const user = useSelector<AppState, AppState['user']>((state): AppState['user'] => state.user);
   const { t } = useTranslation();
   const isAuth = useSelector(getIsAuth);
-  const  profile  = useSelector(getProfile);
+  const profile = useSelector(getProfile);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

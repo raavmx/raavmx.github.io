@@ -23,7 +23,7 @@ export const Header: FC = (): ReactElement => {
       </div>
       <div className="col-2">
         <div className="d-flex justify-content-end">
-        <div className="btn-group me-2">
+          <div className="btn-group me-2">
             <Login height={35} width={35} />
           </div>
           <div className="btn-group me-2">

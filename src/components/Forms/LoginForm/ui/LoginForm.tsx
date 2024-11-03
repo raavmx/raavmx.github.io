@@ -45,15 +45,13 @@ export const LoginForm = memo(() => {
             tokenActions.set(data);
             actions.resetForm();
             navigate(-1);
-          }
-          else{
+          } else {
             message.error('Login error');
           }
         })
         .catch((error) => {
           message.error(error.message, 10);
         });
-      
     },
     validate: validate,
   });

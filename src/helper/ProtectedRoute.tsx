@@ -6,14 +6,14 @@ import { getIsAuth } from 'src/features/Auth/service/user';
 
 export type NavigationState = {
   from?: Location;
-}
+};
 
 export const ProtectedRoute: FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAuth = useSelector(getIsAuth);
-  console.log("ProtectedRoute isAuth", isAuth)
-  const location = useLocation()
-  sessionStorage.setItem
-  if (isAuth) return <>{children}</>
-  console.warn("Authorization required", location)
-  return <Navigate to={ROUTER_PATH.LOGIN} state={{ from: location } as NavigationState} replace />
-}
+  console.log('ProtectedRoute isAuth', isAuth);
+  const location = useLocation();
+  sessionStorage.setItem;
+  if (isAuth) return <>{children}</>;
+  console.warn('Authorization required', location);
+  return <Navigate to={ROUTER_PATH.LOGIN} state={{ from: location } as NavigationState} replace />;
+};

@@ -3,5 +3,5 @@ export interface CartProductModel {
   image: string;
   title: string;
   cost: number;
-  count:number;
+  count: number;
 }

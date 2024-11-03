@@ -36,7 +36,7 @@ export interface CatalogSchema {
   pageSize: number;
 }
 
-export interface ProductsFilters extends Filter {  
+export interface ProductsFilters extends Filter {
   categoryIds?: string[];
 }
 

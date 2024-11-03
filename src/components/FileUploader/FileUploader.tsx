@@ -29,18 +29,18 @@ export const FileUploader = memo(
 
     return (
       <div className={cn(s.outer, className, { [s.outer_disabled]: isLoading || disabled })}>
-         <h4 className='py-3'>Изображение</h4>
+        <h4 className="py-3">Изображение</h4>
         <div className={s.picOuter} style={{ aspectRatio: proportion }}>
           <div className={cn(s.outer, className)}>
-        <img className={s.pic} src={pic} />
-      </div>
+            <img className={s.pic} src={pic} />
+          </div>
           <label className={s.edit}>
-            <i className='fas fa-file-edit'></i>
-           
+            <i className="fas fa-file-edit"></i>
+
             <input className={s.input} type="file" onChange={handleChange} />
           </label>
         </div>
-        {error &&  <h4>{error as string}</h4>}
+        {error && <h4>{error as string}</h4>}
       </div>
     );
   }

@@ -1,6 +1,6 @@
 export const resources = {
   Ru: {
-    translation: {      
+    translation: {
       account: {
         title: 'Учётная запись',
         sign_in: 'Войти',
@@ -41,9 +41,9 @@ export const resources = {
       info: {
         registered: 'Зарегистрирован',
       },
-      cart:{
-        empty:"Корзина пуста",
-        clear:"Очистить корзину"
+      cart: {
+        empty: 'Корзина пуста',
+        clear: 'Очистить корзину',
       },
       forms: {
         ProfileForm: {
@@ -91,7 +91,7 @@ export const resources = {
           Button: {
             title: 'Войти',
           },
-          Message:'Успешная авторизация',
+          Message: 'Успешная авторизация',
         },
         RegisterForm: {
           Title: 'Регистрация',
@@ -106,7 +106,7 @@ export const resources = {
           Button: {
             title: 'Регистрация',
           },
-          Message:'Успешная регистрация',
+          Message: 'Успешная регистрация',
         },
         ProductForm: {
           Title: '',
@@ -158,7 +158,7 @@ export const resources = {
         title: 'Account',
         sign_in: 'Sign In',
         sign_up: 'Sign Up',
-        logout: 'Logout',        
+        logout: 'Logout',
       },
       logo: {
         title: 'Vsyakiy hlam',
@@ -194,9 +194,9 @@ export const resources = {
       info: {
         registered: 'Registered',
       },
-      cart:{
-        empty:"Cart is empty",
-        clear:"Clear cart"
+      cart: {
+        empty: 'Cart is empty',
+        clear: 'Clear cart',
       },
       forms: {
         ProfileForm: {
@@ -244,7 +244,7 @@ export const resources = {
           Button: {
             title: 'Sign in',
           },
-          Message:'Success',
+          Message: 'Success',
         },
         RegisterForm: {
           Title: 'Sign up',
@@ -259,7 +259,7 @@ export const resources = {
           Button: {
             title: 'Sign up',
           },
-          Message:'Success',
+          Message: 'Success',
         },
         ProductForm: {
           Title: '',

@@ -7,7 +7,7 @@ import { AppState } from 'src/app/store/store';
 
 export const signUp = createAsyncThunk('user/signUp', async (credential: Credential, { rejectWithValue, dispatch }) => {
   try {
-    const data = await sign_up(credential);
+    await sign_up(credential);
   } catch (error) {
     return rejectWithValue(error.message);
   }
@@ -15,9 +15,9 @@ export const signUp = createAsyncThunk('user/signUp', async (credential: Credent
 
 export const signIn = createAsyncThunk('user/signIn', async (credential: Credential, { rejectWithValue, dispatch }) => {
   try {
-    const data = await sign_in(credential).then((data: AuthResponse) => {
+    await sign_in(credential).then((data: AuthResponse) => {
       dispatch(userActions.setInfo(data));
-      //  localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, data.token);
+      localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, data.token);
       dispatch(resetCatalog());
       dispatch(productApi.util.resetApiState());
     });
@@ -64,7 +64,7 @@ interface User {
 const getInitialState = (): UserStateType => {
   //localStorage.clear();
   const user = localStorage.getItem(LOCAL_STORAGE_USER_KEY);
-  console.log('getInitialState', user)
+  console.log('getInitialState', user);
   if (user) {
     return JSON.parse(user) as UserStateType;
   }
@@ -122,7 +122,7 @@ const userSlice = createSlice({
       state.status = 'loading';
     });
     builder.addCase(signIn.fulfilled, (state, action) => {
-      state.status = 'resolve';      
+      state.status = 'resolve';
     });
     builder.addCase(signIn.rejected, (state, action) => {
       state.status = 'rejected';
@@ -131,7 +131,7 @@ const userSlice = createSlice({
   },
 });
 
-export const getIsAuth = (state: AppState)=> state.user.isAuthenticated;
+export const getIsAuth = (state: AppState) => state.user.isAuthenticated;
 export const getProfile = (state: AppState) => state.user.user;
 export const userActions = userSlice.actions;
 export const user = userSlice.reducer;

@@ -1,8 +1,8 @@
-import { Category,CategoryParams } from '../../../types/CategoryTypes';
+import { Category, CategoryParams } from '../../../types/CategoryTypes';
 import { rtkApi } from './rtkApi';
 import { stringifyNestedObjects } from 'src/utils/stringifyNestedObjects';
 import { transformErrorResponse } from 'src/utils/transformErrorResponse';
-import {  Filter, FilterRequest, FilterResponse } from 'src/types/FilterTypes';
+import { Filter, FilterRequest, FilterResponse } from 'src/types/FilterTypes';
 
 const fetchCategoriesParams: FilterRequest = (() => {
   const params: Filter = {

@@ -1,17 +1,16 @@
-import {SERVER_URL, COMMAND_ID } from '../../app/constants/api';
+import { SERVER_URL, COMMAND_ID } from '../../app/constants/api';
 import { getToken } from './getToken';
 
 export type Credential = {
   email: string;
-  password: string;  
+  password: string;
 };
-
 
 export const sign_up = async ({ email, password }: Credential) => {
   const response = await fetch(SERVER_URL + `/signup`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password, commandId:COMMAND_ID }),
+    body: JSON.stringify({ email, password, commandId: COMMAND_ID }),
   });
 
   if (!response.ok) {
@@ -22,12 +21,11 @@ export const sign_up = async ({ email, password }: Credential) => {
   return await response.json();
 };
 
-
 export const sign_in = async ({ email, password }: Credential) => {
   const response = await fetch(SERVER_URL + `/signin`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization':getToken() },
-    body: JSON.stringify({ email, password, commandId:COMMAND_ID }),
+    headers: { 'Content-Type': 'application/json', Authorization: getToken() },
+    body: JSON.stringify({ email, password, commandId: COMMAND_ID }),
   });
 
   if (!response.ok) {

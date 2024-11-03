@@ -5,8 +5,7 @@ import { Button } from '../../../Buttons/Button/Button';
 import { TextFormField } from '../../../FormField/TextFormField';
 import { ProfileFormErrors, ProfileFormValues } from '../types/ProfileFormTypes';
 import { isNotDefinedString } from '../../../../utils/validation';
-import { useEditProfileMutation } from 'src/entities/Profile/api/profileApi';
-import { useFetchProfileQuery } from 'src/entities/Profile/api/profileApi';
+import { useEditProfileMutation, useFetchProfileQuery } from 'src/entities/Profile/api/profileApi';
 import { Loader } from 'src/components/Loader/Loader';
 
 export const ProfileForm: FC = () => {
@@ -36,7 +35,7 @@ export const ProfileForm: FC = () => {
 
   return (
     <form>
-      <h4 className='py-4'>{t('forms.ProfileForm.Title')}</h4>
+      <h4 className="py-4">{t('forms.ProfileForm.Title')}</h4>
       <TextFormField
         onBlur={handleBlur}
         onChange={handleChange}
